@@ -50,9 +50,13 @@ LNPV = Σ[t=0 to 40] (Wage_treatment(t) - Wage_control(t)) / (1 + δ)^t
 ```
 
 Where:
-- **δ = 5%** social discount rate
+- **δ = 5%** social discount rate (standard for development economics)
 - Wages follow the **Mincer equation** (returns to education and experience)
 - Treatment effects may **decay over time** (especially for Apprenticeship)
+
+> **Why 40 years?** This represents a full career horizon from age 18 (post-intervention) to age 58 (typical retirement in India). Longer horizons increase NPV but add uncertainty.
+>
+> **Why 5% discount rate?** This reflects the social opportunity cost of capital in developing economies. Lower rates (3%) favor long-term benefits; higher rates (8%) favor near-term outcomes. We test all three in sensitivity analysis.
 
 ### The Critical Variable: Formal Sector Entry
 
@@ -70,6 +74,10 @@ This creates a **compounding divergence** over a career:
 
 **This is why `P(Formal)` is the #1 NPV driver**—getting someone into formal employment has larger lifetime effects than any initial wage premium.
 
+> **What is "formal sector"?** Jobs with written contracts, social security (PF, ESI), and labor law protections. This includes organized manufacturing, IT services, banking, government jobs, and registered companies. Informal sector includes agriculture, street vendors, domestic workers, and most small businesses.
+>
+> **Why does formal grow and informal decline?** Formal sector workers benefit from annual increments, promotions, and skill accumulation in structured environments. Informal workers face wage stagnation, no job security, and often declining earnings as they age and physical capacity decreases.
+
 ---
 
 ## RTE Intervention Results
@@ -84,7 +92,7 @@ Private School → Test Score Gains → Educational Credentials → Formal Secto
 | Stage | Mechanism | Evidence |
 |-------|-----------|----------|
 | (1) Private School | RTE 25% quota provides access | Policy mechanism |
-| (2) Test Score Gains | +0.137 SD (ITT estimate) | Muralidharan & Sundararaman 2013 |
+| (2) Test Score Gains | +0.137 SD (ITT estimate) | Muralidharan & Sundararaman 2013 (NBER RCT) |
 | (3) Educational Credentials | Higher completion rates | UDISE+ data |
 | (4) Formal Sector Entry | **30% vs. 9.1% baseline** | RWF guidance + ILO 2024 |
 | (5) Wage Premium | Mincer returns (5.8%/year) | Chen et al. 2022 |
@@ -98,6 +106,10 @@ Private School → Test Score Gains → Educational Credentials → Formal Secto
 | P(Formal \| Control) | 9.1% | ILO India 2024 |
 | Mincer return | 5.8% | Chen et al. 2022 |
 
+> **What is "0.137 SD"?** Standard Deviation units measure effect size. A 0.137 SD improvement means RTE children score ~14% of a standard deviation higher than control children. This is a moderate effect—roughly equivalent to 3-4 months of additional learning. It comes from a rigorous Randomized Controlled Trial (RCT).
+>
+> **What is "ITT estimate"?** Intent-to-Treat: the effect on everyone offered the program, not just those who completed it. This is conservative because some offered students may not have attended or completed. The "treatment-on-treated" effect would be higher.
+
 ### RTE Decomposition: Where Does the Value Come From?
 
 ![RTE Decomposition](https://raw.githubusercontent.com/maxiveloso/rwf-economic-model/main/data/results/figures/decomposition_stacked_bar.png)
@@ -105,6 +117,8 @@ Private School → Test Score Gains → Educational Credentials → Formal Secto
 **Key Finding:** ~79% of RTE's economic benefit comes from the **Placement Effect** (improved formal sector access), and only ~21% from the **Mincer Effect** (better learning outcomes translating to wage premium).
 
 **Implication:** RTE's primary value is as a **pathway to formal employment**, not just improved learning. Programs should consider career guidance and placement support to maximize this effect.
+
+> **Why does private schooling lead to formal jobs?** Three possible mechanisms: (1) **Signaling**—private school credentials signal quality to employers even if learning differences are modest; (2) **Networks**—private schools connect students to social capital and job networks; (3) **Expectations**—families who invest in private schooling also invest in formal job-seeking behavior.
 
 ---
 
@@ -140,6 +154,8 @@ The wage premium from apprenticeship training **decays exponentially** over time
 
 ![Decay Trajectory](https://raw.githubusercontent.com/maxiveloso/rwf-economic-model/main/data/results/figures/validation_decay_trajectory.png)
 
+The decay follows the exponential formula: **π(t) = π₀ × exp(-λt)** where λ = ln(2)/h and h is the half-life in years.
+
 With a 12-year half-life:
 - Year 12: Premium at 50% of initial
 - Year 24: Premium at 25% of initial
@@ -160,7 +176,11 @@ Or equivalently:
 π(t) = π₀ × (0.5)^(t/h)
 ```
 
-**Why Apprenticeship NPV is higher than RTE despite decay:** The 68% formal placement rate (vs. 9% counterfactual) creates a massive 59 percentage point advantage that dominates the calculation.
+> **Why exponential decay?** The pattern is non-linear—most skill value erodes in early years, then stabilizes. This reflects how specific technical knowledge becomes outdated while general work habits and foundational skills persist longer.
+>
+> **Why 12 years?** This is our best estimate based on vocational training literature, but it's uncertain. Trades like electrical work or plumbing may have longer half-lives (20-30 years); rapidly-evolving tech fields may have shorter ones (5-7 years). This is why we sensitivity-test from 5 to 50 years.
+
+**Why Apprenticeship NPV is higher than RTE despite decay:** The 68% formal placement rate (vs. 9% counterfactual) creates a massive 59 percentage point advantage that dominates the calculation. Even though the skill premium fades, the permanent shift into formal sector employment continues generating benefits for the full 40-year career.
 
 ---
 
@@ -238,6 +258,8 @@ This heatmap shows how Apprenticeship LNPV varies jointly with placement rate an
 
 We ran **1,000 simulations** drawing parameters from their uncertainty distributions to quantify overall model uncertainty.
 
+> **What is Monte Carlo simulation?** Instead of using single "best guess" values for each parameter, we draw random values from realistic ranges and run the model thousands of times. This gives us a distribution of possible outcomes, showing not just the average but also the spread of uncertainty. The 5th-95th percentile range tells us: "In 90% of plausible scenarios, the true value lies within this range."
+
 ### RTE Distribution
 
 ![Monte Carlo RTE](https://raw.githubusercontent.com/maxiveloso/rwf-economic-model/main/data/results/figures/histogram_monte_carlo_rte.png)
@@ -267,6 +289,10 @@ Since we don't have RWF's actual program costs, we calculated **maximum allowabl
 ```
 Max_Cost = LNPV / Target_BCR
 ```
+
+> **What is a BCR (Benefit-Cost Ratio)?** BCR = Benefits / Costs. A BCR of 3:1 means every Rs 1 spent generates Rs 3 in lifetime benefits. Development programs typically aim for BCR > 2:1 to be considered cost-effective. BCR > 5:1 is excellent.
+>
+> **How to use this:** If your actual cost per beneficiary is **less than** the break-even threshold, you achieve at least that BCR. For example, if RTE costs Rs 3L/beneficiary and the BCR=3 threshold is Rs 4.7L, you're achieving better than 3:1 returns.
 
 ![Break-Even Analysis](https://raw.githubusercontent.com/maxiveloso/rwf-economic-model/main/data/results/figures/breakeven_bar_chart.png)
 
@@ -402,38 +428,193 @@ Model-generated wage trajectories match empirical patterns from PLFS data.
 
 ---
 
-## Appendix: Anticipated Questions
+## Anticipated Questions & Answers
 
-### Q: "Are these results causal?"
+### Q1: "Are these results causal?"
 
-**A:** No, these are correlation-based estimates that assume away selection bias. True causal effects could be 20-40% lower if motivated families self-select into private schools or apprenticeships. However, even with a 40% haircut, both interventions remain cost-effective.
+**A:** No, these are correlation-based estimates that assume away selection bias. True causal effects could be 20-40% lower if motivated families self-select into private schools or apprenticeships. A full evaluation with matched control groups and longitudinal data would address this concern. However, even with a 40% haircut, both interventions remain cost-effective.
 
-### Q: "What's the single most important thing to improve this analysis?"
+---
 
-**A:** A 1-2 year longitudinal tracer study tracking 200-300 beneficiaries. This would validate P_FORMAL assumptions, pin down wage persistence, and measure actual wages. Cost: ~Rs 5-8 Lakhs. Impact: 50%+ uncertainty reduction.
+### Q2: "Why are results so different across regions?"
 
-### Q: "Why is the RTE benefit mostly from 'placement effect' rather than learning?"
+**A:** This reflects real labor market differences across India:
+- South has approximately 2× the formal sector employment rate compared to East
+- Urban areas have higher wage levels and more formal sector opportunities
+- Gender gaps in formal employment vary by region
 
-**A:** Our decomposition shows ~80% of RTE LNPV comes from formal sector entry differential (30% vs 9.1%), not from test score gains. Possible explanations:
-1. **Signaling:** Private school credentials signal quality to employers
-2. **Network effects:** Private school connections open formal sector doors
-3. **Confounding:** Families choosing private schools may have other advantages
+**Implications:**
+- Consider focusing expansion on high-return regions (South/West urban)
+- For low-return regions, consider complementary interventions (migration support, local formal sector development)
+- Regional targeting can improve overall program cost-effectiveness
 
-### Q: "How confident are you in the 30% formal entry rate for RTE graduates?"
+---
 
-**A:** This is our highest-uncertainty parameter. Sensitivity analysis shows:
+### Q3: "What's the single most important thing to improve this analysis?"
+
+**A:** A 1-2 year longitudinal tracer study tracking 200-300 beneficiaries to measure actual wage trajectories. This would:
+
+1. **Validate P_FORMAL assumptions** - Is 30% formal entry for RTE graduates accurate?
+2. **Pin down wage persistence (h)** - Does the Apprenticeship premium really last 10+ years?
+3. **Measure actual wages** - Are our PLFS-based projections realistic?
+
+**Cost:** Approximately Rs 5-8 lakhs
+**Impact:** Would reduce uncertainty by 50%+ and convert PoC to causal evaluation
+
+---
+
+### Q4: "Should we use these results to decide between expanding RTE vs. Apprenticeship?"
+
+**A:** With appropriate caveats, yes. Key trade-offs to consider:
+
+| Factor | RTE | Apprenticeship |
+|--------|-----|----------------|
+| Average LNPV | Rs 14L | Rs 34L |
+| Upfront cost | Lower | Higher |
+| Operational complexity | Lower | Higher |
+| Time to impact | Longer (education pathway) | Shorter (direct employment) |
+| Scalability | Higher | Lower |
+| Uncertainty | Lower (education effects well-studied) | Higher (h parameter uncertain) |
+
+**Decision depends on:** Budget constraints, target population demographics, organizational capacity, and whether you prioritize immediate placement (Apprenticeship) vs. long-term human capital formation (RTE).
+
+---
+
+### Q5: "Why is the RTE benefit mostly from 'placement effect' rather than learning?"
+
+**A:** Our decomposition analysis shows ~80% of RTE LNPV comes from the formal sector entry differential (30% vs 9.1%), not from test score gains. Three possible interpretations:
+
+1. **Signaling:** Private school credentials signal quality to employers, regardless of actual learning differences
+2. **Network effects:** Private school connections and social capital open formal sector doors
+3. **Confounding:** Families choosing private schools may have other unobserved advantages
+
+**Important caveat:** This doesn't mean learning doesn't matter—it means the formal sector pathway is the primary *mechanism* through which RTE generates economic returns. A tracer study would help disentangle these effects.
+
+**Policy implication:** RTE programs should consider adding career guidance and placement support to maximize the formal sector pathway.
+
+---
+
+### Q6: "What if our actual costs are higher than your break-even thresholds?"
+
+**A:** The break-even analysis provides decision rules for different scenarios:
+
+| Scenario | Break-Even at BCR=3:1 | Interpretation |
+|----------|----------------------|----------------|
+| RTE Urban South | Rs 9.6L/beneficiary | Can sustain high program costs |
+| RTE Rural East | Rs 1.9L/beneficiary | Cost-sensitive, needs efficiency |
+| Apprenticeship Urban | Rs 12-17L/beneficiary | Substantial cost tolerance |
+| Apprenticeship Rural | Rs 6-8L/beneficiary | Moderate cost tolerance |
+
+**If your costs exceed these thresholds, three options:**
+1. **Focus:** Prioritize regions/demographics where you're clearly above threshold
+2. **Reduce costs:** Identify operational efficiencies
+3. **Accept lower BCR:** Some regions may still be worth serving at BCR=2:1 for equity or strategic reasons
+
+---
+
+### Q7: "How confident are you in the 30% formal entry rate for RTE graduates?"
+
+**A:** This is our highest-uncertainty parameter (Tier 1). The 30% estimate is based on:
+- RWF guidance and program theory
+- Literature suggesting private schooling improves formal outcomes 3× over baseline
+- ILO 2024 data showing 9.1% baseline for higher secondary graduates
+
+**Sensitivity analysis:**
 - If actual rate is 20%: RTE LNPV drops ~30%
 - If actual rate is 50%: RTE LNPV increases ~50%
 - Even at 20%, RTE remains cost-effective for most scenarios
 
-### Q: "How does this compare to other education/training interventions globally?"
+**Recommendation:** A tracer study following 100 RTE beneficiaries 2 years post-graduation would resolve this. It's the single most valuable data RWF could collect.
+
+---
+
+### Q8: "Why do Apprenticeship results vary so much with half-life (h)?"
+
+**A:** Because Apprenticeship benefits depend critically on whether vocational skills remain relevant over time:
+
+| Half-Life | Interpretation | LNPV Impact |
+|-----------|---------------|-------------|
+| h=5 years | Skills become obsolete quickly (e.g., rapidly changing technology) | -40% |
+| h=12 years | Moderate skill persistence (baseline assumption) | Baseline |
+| h=50 years | Durable skills (e.g., electrical, plumbing, welding) | +30% |
+
+**RTE doesn't have this problem** because education creates a permanent credential that doesn't depreciate.
+
+**Implications for Apprenticeship program design:**
+1. Focus on trades with durable, transferable skills
+2. Build in upskilling/reskilling pathways for apprentices
+3. Avoid sectors with rapid technological change unless paired with continuous learning
+
+---
+
+### Q9: "What about the informal sector? Are we ignoring 90% of the labor market?"
+
+**A:** No—we explicitly model informal sector outcomes. Key insight:
+
+- Informal sector wages show **-0.2% real growth** annually
+- Formal sector wages show **+1.5% real growth** annually
+- Today's 2.25× formal/informal wage gap becomes **3-4× by retirement**
+
+**This means:** Interventions that improve formal sector entry rates have **compounding returns** over a 40-year career. The gap widens, not narrows.
+
+**This is why P_FORMAL is our #1 NPV driver**, not the initial wage premium. Getting someone into formal employment has larger lifetime effects than giving them a higher starting wage in the informal sector.
+
+---
+
+### Q10: "Can we trust parameters from 2019-2022 studies in 2026?"
+
+**A:** Valid concern. Here's what we used and the risks:
+
+| Parameter | Source Year | Risk |
+|-----------|-------------|------|
+| Wages | PLFS 2023-24 | Low - current data |
+| Mincer returns | Chen et al. 2022 | Low - most recent India estimate |
+| Test score effects | NBER RCT 2013 | Medium - no newer RCTs available |
+| Formal employment rates | ILO 2024 | Low - current data |
+
+**What could have changed:**
+1. Post-COVID labor market recovery → formal employment rates may differ
+2. Skill premium evolution → Mincer returns could be higher/lower
+3. RWF program maturation → your outcomes may differ from national averages
+
+**Mitigation:** Our sensitivity ranges are deliberately wide enough to capture reasonable shifts. Monte Carlo 5th-95th percentile brackets most plausible scenarios.
+
+---
+
+### Q11: "What's the policy implication for government/donors?"
+
+**A:** Three key takeaways:
+
+1. **Both interventions pass cost-effectiveness thresholds** even under pessimistic assumptions—continued investment is justified
+
+2. **Formal sector entry is the key mechanism**—policies should focus on employment pathways, not just learning outcomes. Consider linking RTE to career guidance/placement support.
+
+3. **Regional targeting matters**—South/West urban returns are 50%+ higher than North/East rural. Strategic geographic focus improves overall impact.
+
+**For government:** RTE quota enforcement is valuable, but only if it translates to formal employment. Consider policy linkages between education and labor market programs.
+
+**For donors:** Apprenticeship has higher ROI but higher complexity. RTE is simpler to scale but requires longer time horizons to realize returns.
+
+---
+
+### Q12: "How does this compare to other education/training interventions globally?"
 
 **A:** Our estimates are consistent with global benchmarks:
 
 | Intervention Type | Typical BCR Range | Our Estimates |
 |-------------------|-------------------|---------------|
-| Secondary education | 5:1 - 10:1 | RTE: 3:1 - 8:1 |
+| Primary education (World Bank) | 10:1 - 15:1 | N/A |
+| Secondary education | 5:1 - 10:1 | RTE: 3:1 - 8:1 (depending on costs) |
 | Vocational training (ILO) | 2:1 - 6:1 | Apprenticeship: 4:1 - 12:1 |
+| Job training programs (J-PAL) | 1:1 - 4:1 | Within range |
+
+Our Apprenticeship estimates are on the higher end, which is plausible given RWF's 68% placement rate (well above national average). RTE estimates are conservative, reflecting our honest uncertainty about the causal pathway.
+
+---
+
+## Closing Statement
+
+> "This Proof-of-Concept provides sufficient evidence to justify continued investment in RWF's interventions, with clear pathways to reduce uncertainty through targeted data collection. Both programs generate positive lifetime returns across all scenarios tested. The key question isn't whether these interventions work—it's how to optimize their delivery for maximum impact."
 
 ---
 
