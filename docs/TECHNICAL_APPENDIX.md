@@ -199,22 +199,22 @@ Mincer Effect = NPV(test_gain=0.137) - NPV(test_gain=0) | same P_FORMAL
 
 | Region | Gender | Location | LNPV (Rs Lakhs) | P(Formal) |
 |--------|--------|----------|-----------------|-----------|
-| South | Male | Urban | 55.21 | 75% |
-| South | Female | Urban | 43.85 | 75% |
-| South | Male | Rural | 36.15 | 75% |
-| South | Female | Rural | 25.02 | 75% |
-| West | Male | Urban | 53.32 | 75% |
-| West | Female | Urban | 42.43 | 75% |
-| West | Male | Rural | 34.81 | 75% |
-| West | Female | Rural | 24.11 | 75% |
-| North | Male | Urban | 48.31 | 75% |
-| North | Female | Urban | 38.53 | 75% |
-| North | Male | Rural | 31.47 | 75% |
-| North | Female | Rural | 21.83 | 75% |
-| East | Male | Urban | 43.43 | 75% |
-| East | Female | Urban | 34.70 | 75% |
-| East | Male | Rural | 28.25 | 75% |
-| East | Female | Rural | 19.64 | 75% |
+| South | Male | Urban | 52.34 | 68% |
+| South | Female | Urban | 41.20 | 68% |
+| South | Male | Rural | 34.70 | 68% |
+| South | Female | Rural | 23.91 | 68% |
+| West | Male | Urban | 50.38 | 68% |
+| West | Female | Urban | 39.71 | 68% |
+| West | Male | Rural | 33.33 | 68% |
+| West | Female | Rural | 22.97 | 68% |
+| North | Male | Urban | 45.55 | 68% |
+| North | Female | Urban | 35.97 | 68% |
+| North | Male | Rural | 30.08 | 68% |
+| North | Female | Rural | 20.76 | 68% |
+| East | Male | Urban | 40.85 | 68% |
+| East | Female | Urban | 32.31 | 68% |
+| East | Male | Rural | 26.94 | 68% |
+| East | Female | Rural | 18.62 | 68% |
 
 **Apprenticeship Summary Statistics:**
 - Minimum: Rs 18.6L (East Female Rural)
@@ -230,14 +230,14 @@ Break-even analysis identifies maximum allowable program costs at different BCR 
 
 | Intervention | BCR Target | Cost Range (Rs Lakhs) | Mean (Rs Lakhs) |
 |--------------|------------|----------------------|-----------------|
-| RTE | 1:1 | 3.85 - 18.01 | 9.2 |
-| RTE | 2:1 | 1.93 - 9.01 | 4.6 |
-| RTE | 3:1 | 1.28 - 6.00 | 3.1 |
-| Apprenticeship | 1:1 | 19.64 - 55.21 | 36.3 |
-| Apprenticeship | 2:1 | 9.82 - 27.61 | 18.2 |
-| Apprenticeship | 3:1 | 6.55 - 18.40 | 12.1 |
+| RTE | 1:1 | 5.2 - 28.7 | 14.0 |
+| RTE | 2:1 | 2.6 - 14.4 | 7.0 |
+| RTE | 3:1 | 1.7 - 9.6 | 4.7 |
+| Apprenticeship | 1:1 | 18.6 - 52.3 | 34.4 |
+| Apprenticeship | 2:1 | 9.3 - 26.2 | 17.2 |
+| Apprenticeship | 3:1 | 6.2 - 17.4 | 11.5 |
 
-**Interpretation:** If RWF's actual cost per RTE beneficiary is below Rs 6L (for South Urban) or Rs 1.9L (for East Rural), the program achieves at least BCR=3:1.
+**Interpretation:** If RWF's actual cost per RTE beneficiary is below Rs 9.6L (for South Urban) or Rs 1.7L (for East Rural), the program achieves at least BCR=3:1.
 
 ### 4.3 Sensitivity Analysis Summary
 
@@ -258,7 +258,7 @@ Break-even analysis identifies maximum allowable program costs at different BCR 
 | 5 | Rapid obsolescence | -40% |
 | 12 | Moderate persistence (baseline) | Baseline |
 | 20 | Durable skills | +20% |
-| 50 | Near-permanent | +30% |
+| 30 | Long-term persistence | +25% |
 
 **Monte Carlo Results (10,000 simulations):**
 

@@ -51,7 +51,7 @@ Private School → Test Score Gains → Educational Credentials → Formal Secto
 | (2) Test Score Gains | +0.137 SD (ITT estimate) | Muralidharan & Sundararaman 2013 |
 | (3) Educational Credentials | Higher completion rates | UDISE+ data |
 | (4) Formal Sector Entry | 30% vs. 9.1% baseline | RWF guidance + ILO 2024 |
-| (5) Wage Premium | Mincer returns (7%/year) | Mitra 2019 |
+| (5) Wage Premium | Mincer returns (5.8%/year) | Chen et al. 2022 |
 
 **Key Parameters:**
 
@@ -59,7 +59,7 @@ Private School → Test Score Gains → Educational Credentials → Formal Secto
 |-----------|-------|--------|
 | Test score gain | 0.137 SD | NBER RCT (ITT estimate) |
 | SD to years conversion | 6.8 | Angrist & Evans 2020 |
-| Mincer return | 7.0% | Mitra 2019 via Chen et al. 2022 |
+| Mincer return | 5.8% | Chen et al. 2022 (PLFS 2018-19) |
 | P(Formal | RTE) | 30% | RWF guidance |
 | P(Formal | Control) | 9.1% | ILO India 2024 |
 
@@ -100,25 +100,25 @@ Apprenticeship → Skill Certification → Employer Absorption → Formal Wages 
 |-------|-----------|----------|
 | (1) Program Enrollment | Application and selection | MSDE data |
 | (2) NAC Certification | 85% completion rate | MSDE Annual Report |
-| (3) Employer Absorption | 72% placement rate | RWF program data |
+| (3) Employer Absorption | 68% placement rate | RWF program data |
 | (4) Formal Wages | 2.25× informal wage | ILO 2024 |
-| (5) Premium Persistence | Half-life 10 years | Assumed (sensitivity tested) |
+| (5) Premium Persistence | Half-life 12 years | Assumed (sensitivity tested) |
 
 **Key Parameters:**
 
 | Parameter | Value | Source |
 |-----------|-------|--------|
 | Completion rate | 85% | MSDE Annual Report 2023-24 |
-| Placement rate (formal) | 72% | RWF program data |
-| Initial wage premium | Rs 84,000/year | Calculated |
-| Premium half-life | 10 years | Assumed (range: 5-50) |
-| P(Formal | No Training) | 10% | PLFS derived |
+| Placement rate (formal) | 68% | RWF program data |
+| Initial wage premium | Rs 78,000/year | Calculated |
+| Premium half-life | 12 years | Assumed (range: 5-30) |
+| P(Formal | No Training) | 9% | ILO India 2024 |
 
 **Counterfactual (Control Group):**
 
 Without apprenticeship, youth entering labor market directly face:
 - 10-17% unemployment rate
-- 90%+ informal sector employment
+- 91%+ informal sector employment
 - Low, stagnant wages (Rs 400-500/day casual)
 - No social security benefits
 
@@ -130,13 +130,13 @@ The apprenticeship wage premium decays exponentially:
 π(t) = π₀ × exp(-λt)
 
 Where:
-- π₀ = Rs 84,000 (initial annual premium)
+- π₀ = Rs 78,000 (initial annual premium)
 - λ = ln(2) / h (decay rate)
-- h = 10 years (half-life)
+- h = 12 years (half-life)
 ```
 
-At t=10 years, premium has declined to 50% of initial value.
-At t=20 years, premium has declined to 25% of initial value.
+At t=12 years, premium has declined to 50% of initial value.
+At t=24 years, premium has declined to 25% of initial value.
 
 ---
 
@@ -150,13 +150,13 @@ ln(W) = β₀ + β₁×S + β₂×Exp + β₃×Exp²
 
 | Parameter | Value | Interpretation |
 |-----------|-------|---------------|
-| β₁ | 7.0% | Return per year of schooling |
+| β₁ | 5.8% | Return per year of schooling |
 | β₂ | 0.885% | Linear experience return |
 | β₃ | -0.0123% | Experience squared (diminishing returns) |
 
 **Important:** Returns to education are **concentrated in formal sector employment**. In the informal sector (90%+ of workforce), returns to education are near-zero. This creates a stark bifurcation:
 
-- **Formal sector:** Education → Higher wages (8.6%/year)
+- **Formal sector:** Education → Higher wages (5.8%/year)
 - **Informal sector:** Education → Minimal wage gains
 
 This is why **P(Formal)** is the critical mediating variable for both interventions.
@@ -283,7 +283,7 @@ Computed for BCR = 1:1, 2:1, 3:1 across all 32 scenarios.
 |------------|--------|------------|
 | No causal identification | May overstate effects | Wide sensitivity ranges |
 | Macro-regional aggregation | Misses state/district variation | Regional multipliers |
-| Assumed half-life (h) | Uncertain for apprenticeship | Sensitivity from 5-50 years |
+| Assumed half-life (h) | Uncertain for apprenticeship | Sensitivity from 5-30 years |
 | Population averages | Not RWF-specific | Recommend tracer study |
 | Cross-sectional wage data | No longitudinal validation | PLFS trend analysis |
 

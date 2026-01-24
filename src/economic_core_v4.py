@@ -1899,15 +1899,15 @@ def adjust_npv_to_intervention_year(
         years_to_entry: Years from intervention to labor market entry
                        - RTE: 16 years (enroll age 6 â†’ entry age 22)
                        - Apprenticeship: 0-2 years (start age 18-20 â†’ entry age 18-20)
-        discount_rate: Social discount rate (default 3.72%)
-    
+        discount_rate: Social discount rate (default 5%)
+
     Returns:
         NPV in intervention-year terms (further discounted)
-    
+
     Example:
-        RTE intervention in 2025 â†’ labor market entry 2041 (16 years)
-        NPV_2041 = Rs 22.8L (in 2025 prices, at 2041 entry)
-        NPV_2025 = 22.8L / (1.0372)^16 = Rs 12.2L
+        RTE intervention in 2025 → labor market entry 2041 (16 years)
+        NPV_2041 = Rs 14.0L (in 2025 prices, at 2041 entry)
+        NPV_2025 = 14.0L / (1.05)^16 = Rs 6.4L
         
         Interpretation: The Rs 22.8L benefit starting in 2041 is worth
         Rs 12.2L in "2025 intervention-year terms" after accounting for

@@ -120,8 +120,8 @@ Generated: 2026-01-23 11:23:12
 
 | Parameter | Symbol | Value | Range | Source |
 |-----------|--------|-------|-------|--------|
-| Mincer Return (HS) | β | 7.0% | (5%, 9%) | Mitra (2019) |
-| Social Discount Rate | δ | 5-8.5% | (3%, 8%) | Murty & Panda (2020) |
+| Mincer Return (HS) | β | 5.8% | (5%, 8%) | Chen et al. (2022) |
+| Social Discount Rate | δ | 5% | (3%, 8%) | Murty & Panda (2020) |
 | P_FORMAL_RTE | P(F|RTE) | 30% | (20%, 50%) | RWF guidance |
 | P_FORMAL_HIGHER_SECONDARY | P(F|HS) | 9.1% | (5%, 15%) | ILO 2024 |
 | Real Wage Growth (Formal) | g_formal | 1.5% | (0.5%, 2.5%) | PLFS 2020-24 |
@@ -130,6 +130,6 @@ Generated: 2026-01-23 11:23:12
 ### Model Integrity
 
 - All 32 baseline LNPVs are positive
-- NPV ranges are plausible: RTE ₹3.8L-₹18L, Apprenticeship ₹19.6L-₹55.2L
+- NPV ranges are plausible: RTE ₹5.2L-₹28.7L, Apprenticeship ₹18.6L-₹52.3L
 - Regional heterogeneity follows expected economic patterns
 - Decomposition validates: Placement Effect (~80%) + Mincer Effect (~20%) = Total

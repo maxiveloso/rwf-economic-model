@@ -23,8 +23,8 @@ The model produces order-of-magnitude benefit estimates across **32 demographic-
 
 | Intervention | Average LNPV | Range | Key Driver |
 |--------------|--------------|-------|------------|
-| **RTE** | Rs 9.2 Lakhs | Rs 3.9L - Rs 18.0L | Formal sector entry (30% vs 9.1%) |
-| **Apprenticeship** | Rs 36.3 Lakhs | Rs 19.6L - Rs 55.2L | 72% placement rate + wage premium |
+| **RTE** | Rs 14.0 Lakhs | Rs 5.2L - Rs 28.7L | Formal sector entry (30% vs 9.1%) |
+| **Apprenticeship** | Rs 34.4 Lakhs | Rs 18.6L - Rs 52.3L | 68% placement rate + wage premium |
 
 ### Summary Finding
 
@@ -156,10 +156,10 @@ Where:
 ### Key Economic Mechanisms
 
 1. **Formal/Informal Sector Split**: Formal wages grow at +1.5%/year; informal at -0.2%/year
-2. **Mincer Wage Equation**: Returns to education at 7% per year of schooling
+2. **Mincer Wage Equation**: Returns to education at 5.8% per year of schooling
 3. **Treatment Effects**:
    - RTE: Increased formal sector entry (30% vs 9.1% baseline)
-   - Apprenticeship: 72% placement rate + initial wage premium with exponential decay
+   - Apprenticeship: 68% placement rate + initial wage premium with exponential decay
 
 ### RTE Decomposition
 
@@ -178,9 +178,9 @@ The model uses 77 parameters documented in `data/parameters/Parameter_Sources_Ma
 | Parameter | Value | Range | Source |
 |-----------|-------|-------|--------|
 | P_FORMAL_RTE | 30% | 20-50% | RWF guidance |
-| P_FORMAL_APPRENTICE | 72% | 50-90% | MSDE admin data |
-| APPRENTICE_DECAY_HALFLIFE | 10 years | 5-50 | Assumed |
-| MINCER_RETURN_HS | 7.0% | 5-9% | Mitra 2019 |
+| P_FORMAL_APPRENTICE | 68% | 50-90% | RWF program data |
+| APPRENTICE_DECAY_HALFLIFE | 12 years | 5-30 | Assumed |
+| MINCER_RETURN_HS | 5.8% | 5-8% | Chen et al. 2022 |
 
 ### Tier 2 (Important)
 
@@ -203,7 +203,7 @@ The model uses 77 parameters documented in `data/parameters/Parameter_Sources_Ma
 | NPV Magnitude & Ordering | PASS | All 32 LNPVs positive |
 | Break-Even Cost Thresholds | PASS | Range Rs 1.9L - Rs 18.5L |
 | Regional Heterogeneity | PASS | South > West > North > East |
-| Treatment Effect Decay | PASS | Monotonic, 50% at t=10 |
+| Treatment Effect Decay | PASS | Monotonic, 50% at t=12 |
 | Sensitivity Consistency | PASS | MC median within 11% of baseline |
 | Assumptions Documented | PASS | All 77 parameters sourced |
 | Decomposition Analysis | PASS | 80% + 20% = 100% |
@@ -226,7 +226,7 @@ All sources are available in `data/sources/` for reproducibility.
 
 1. **Causal Identification**: Selection-on-observables assumption may overstate effects by 20-40%
 2. **Geographic Granularity**: State/district-level effects require microdata
-3. **Wage Persistence**: Apprenticeship half-life (h=10 years) is assumed
+3. **Wage Persistence**: Apprenticeship half-life (h=12 years) is assumed
 4. **External Validity**: Literature parameters may not fully generalize to RWF beneficiaries
 5. **No Beneficiary Data**: Population averages used, not RWF-specific outcomes
 

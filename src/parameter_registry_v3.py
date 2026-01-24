@@ -695,7 +695,7 @@ INFLATION_RATE = Parameter(
     Our model works entirely in REAL (inflation-adjusted) terms:
     - Baseline wages are already real (2025 prices)
     - REAL_WAGE_GROWTH (g=0.01%) captures real wage dynamics
-    - SOCIAL_DISCOUNT_RATE (3.72%) is already a real discount rate
+    - SOCIAL_DISCOUNT_RATE (5%) is already a real discount rate
     
     We do NOT need to explicitly adjust for inflation because all values are
     already in constant-purchasing-power terms. This inflation rate is documented
@@ -1089,9 +1089,9 @@ APPRENTICE_DECAY_HALFLIFE = Parameter(
     After 2h years: Premium = Initial Premium × 0.25
 
     NPV SENSITIVITY:
-    - h=5 → LNPV ≈ ₹3.5L
-    - h=10 → LNPV ≈ ₹8L
-    - h=∞ → LNPV ≈ ₹22L
+    - h=5 → LNPV ≈ ₹20L (rapid decay)
+    - h=12 → LNPV ≈ ₹34L (baseline)
+    - h=30 → LNPV ≈ ₹42L (long persistence)
 
     This parameter interacts critically with APPRENTICE_INITIAL_PREMIUM.
     Two-dimensional sensitivity (π₀, h) required for robust estimates.
