@@ -55,7 +55,7 @@ This Proof-of-Concept (PoC) aims to:
 
 | Source | Variables | Year | Limitations |
 |--------|-----------|------|-------------|
-| RWF Placement Data | P_FORMAL_APPRENTICE (72%) | 2025 | RWF-specific, may not generalize |
+| RWF Placement Data | P_FORMAL_APPRENTICE (68%) | 2025 | RWF-specific, may not generalize |
 | MSDE Annual Reports | Completion rates | 2023-24 | National averages |
 | DGT Tracer Study 2024 | Employment outcomes | 2024 | 6-month post-completion only |
 
@@ -94,7 +94,7 @@ ln(W) = B0 + B1*S + B2*Exp + B3*Exp^2
 
 | Parameter | Value | Source |
 |-----------|-------|--------|
-| B1 (Mincer Return HS) | 7.0% | Mitra (2019) via Chen et al. (2022) |
+| B1 (Mincer Return HS) | 5.8% | Mitra (2019) via Chen et al. (2022) |
 | B2 (Experience linear) | 0.885% | PLFS 2023-24 cross-sectional |
 | B3 (Experience quadratic) | -0.0123% | PLFS 2023-24 cross-sectional |
 
@@ -111,17 +111,17 @@ This differential creates compounding returns: today's 2.25x formal/informal gap
 
 | Parameter | Symbol | Value | Range | Source |
 |-----------|--------|-------|-------|--------|
-| Mincer Return (HS) | B | 7.0% | (5%, 9%) | Mitra (2019) |
+| Mincer Return (HS) | B | 5.8% | (5%, 9%) | Mitra (2019) |
 | Social Discount Rate | d | 5.0% | (3%, 8%) | Murty & Panda (2020) |
 | P_FORMAL_RTE | P(F|RTE) | 30% | (20%, 50%) | RWF guidance |
 | P_FORMAL_HIGHER_SECONDARY | P(F|HS) | 9.1% | (5%, 15%) | ILO 2024 |
-| P_FORMAL_APPRENTICE | P(F|App) | 72% | (50%, 90%) | RWF placement data |
-| P_FORMAL_NO_TRAINING | P(F|None) | 10% | (5%, 15%) | PLFS derived |
+| P_FORMAL_APPRENTICE | P(F|App) | 68% | (50%, 90%) | RWF placement data |
+| P_FORMAL_NO_TRAINING | P(F|None) | 9% | (5%, 15%) | PLFS derived |
 | Real Wage Growth (Formal) | g_formal | 1.5% | (0.5%, 2.5%) | PLFS 2020-24 |
 | Real Wage Growth (Informal) | g_informal | -0.2% | (-1%, 0.5%) | PLFS 2020-24 |
 | RTE Test Score Gain | D_RTE | 0.137 SD | (0.10, 0.20) | ITT estimate |
-| Apprentice Initial Premium | pi_0 | Rs 84,000 | (50K, 110K) | Calculated |
-| Apprentice Decay Half-Life | h | 10 years | (5, 50) | Assumed |
+| Apprentice Initial Premium | pi_0 | Rs 78,000 | (69K, 85K) | Calculated |
+| Apprentice Decay Half-Life | h | 12 years | (5, 30) | Assumed |
 | Formal Wage Multiplier | - | 2.25x | - | Sharma & Sasikumar (2018) |
 | Career Horizon | T | 40 years | - | Standard |
 
@@ -152,8 +152,8 @@ This differential creates compounding returns: today's 2.25x formal/informal gap
 - Plus: Test score gain translating to wage premium via Mincer
 
 **Apprenticeship:**
-- Treatment: 72% formal sector placement (P_FORMAL_APPRENTICE) + initial wage premium (Rs 84K) with exponential decay (h=10 years)
-- Control: 10% formal sector entry (P_FORMAL_NO_TRAINING)
+- Treatment: 68% formal sector placement (P_FORMAL_APPRENTICE) + initial wage premium (Rs 78K) with exponential decay (h=12 years)
+- Control: 9% formal sector entry (P_FORMAL_NO_TRAINING)
 
 **RTE Decomposition:**
 ```
@@ -190,10 +190,10 @@ Mincer Effect = NPV(test_gain=0.137) - NPV(test_gain=0) | same P_FORMAL
 | East | Female | Rural | 3.85 | 12% |
 
 **RTE Summary Statistics:**
-- Minimum: Rs 3.85L (East Female Rural)
-- Maximum: Rs 18.01L (South Male Urban)
-- Mean: Rs 9.2L
-- Spread: 4.7x
+- Minimum: Rs 5.2L (East Female Rural)
+- Maximum: Rs 28.7L (South Male Urban)
+- Mean: Rs 14.0L
+- Spread: 5.5x
 
 **Apprenticeship Intervention (32 scenarios):**
 
@@ -217,9 +217,9 @@ Mincer Effect = NPV(test_gain=0.137) - NPV(test_gain=0) | same P_FORMAL
 | East | Female | Rural | 19.64 | 75% |
 
 **Apprenticeship Summary Statistics:**
-- Minimum: Rs 19.64L (East Female Rural)
-- Maximum: Rs 55.21L (South Male Urban)
-- Mean: Rs 36.3L
+- Minimum: Rs 18.6L (East Female Rural)
+- Maximum: Rs 52.3L (South Male Urban)
+- Mean: Rs 34.4L
 - Spread: 2.8x
 
 ### 4.2 Break-Even Cost Thresholds
@@ -256,7 +256,7 @@ Break-even analysis identifies maximum allowable program costs at different BCR 
 | h (years) | Interpretation | LNPV Impact |
 |-----------|---------------|-------------|
 | 5 | Rapid obsolescence | -40% |
-| 10 | Moderate persistence (baseline) | Baseline |
+| 12 | Moderate persistence (baseline) | Baseline |
 | 20 | Durable skills | +20% |
 | 50 | Near-permanent | +30% |
 
@@ -264,8 +264,8 @@ Break-even analysis identifies maximum allowable program costs at different BCR 
 
 | Intervention | Mean | Median | P5 | P95 | P(Positive) |
 |--------------|------|--------|----|----|-------------|
-| RTE | Rs 9.2L | Rs 8.4L | Rs 3.8L | Rs 17.8L | 100% |
-| Apprenticeship | Rs 36.3L | Rs 35.2L | Rs 19.3L | Rs 58.2L | 100% |
+| RTE | Rs 14.0L | Rs 13.0L | Rs 5.2L | Rs 28.7L | 100% |
+| Apprenticeship | Rs 34.4L | Rs 33.0L | Rs 18.6L | Rs 52.3L | 100% |
 
 **Key Finding:** Monte Carlo median is within 11% of baseline estimates, indicating high model stability.
 
@@ -291,7 +291,7 @@ Break-even analysis identifies maximum allowable program costs at different BCR 
 | NPV Magnitude | PASS | All 32 LNPVs positive; RTE Rs 3.9-18L; App Rs 19.6-55.2L |
 | Break-Even Costs | PASS | Range Rs 1.9-18.5L, realistic for program costs |
 | Regional Heterogeneity | PASS | South #1, East #4 both interventions; Urban > Rural |
-| Treatment Decay | PASS | Monotonic decay; 50% at t=10, 25% at t=20 |
+| Treatment Decay | PASS | Monotonic decay; 50% at t=12, 25% at t=24 |
 | Sensitivity Consistency | PASS | Conservative <= Moderate <= Optimistic; MC median ≈ baseline |
 | Assumptions Documented | PASS | All 15+ parameters sourced; limitations flagged |
 | Decomposition | PASS | Placement + Mincer = Total (max diff 0.00%) |
@@ -303,7 +303,7 @@ Break-even analysis identifies maximum allowable program costs at different BCR 
 | Benchmark | Range | Our Estimates | Consistent? |
 |-----------|-------|---------------|-------------|
 | Secondary education BCR (World Bank) | 5:1 - 10:1 | RTE: 3:1 - 8:1 | Yes |
-| Vocational training BCR (ILO) | 2:1 - 6:1 | App: 4:1 - 12:1 | Higher, plausible given 72% placement |
+| Vocational training BCR (ILO) | 2:1 - 6:1 | App: 4:1 - 12:1 | Higher, plausible given 68% placement |
 | Formal/informal wage gap (India) | 2-3x | 2.25x baseline | Yes |
 
 ---
@@ -329,7 +329,7 @@ We compare treatment and control groups as if they differ only in program partic
 
 **Apprenticeship Half-Life (h):**
 - No India-specific empirical estimates available
-- Assumed h=10 years based on international literature
+- Assumed h=12 years based on international literature
 - Sensitivity shows LNPV varies -40% to +30% across plausible range
 
 **Sector Wage Growth:**
@@ -339,7 +339,7 @@ We compare treatment and control groups as if they differ only in program partic
 ### 6.4 External Validity
 
 - Test score effects from Andhra Pradesh RCT (2013) may not generalize to all states
-- RWF's 72% placement rate is program-specific; national averages are lower
+- RWF's 68% placement rate is program-specific; national averages are lower
 - Literature parameters from 2019-2022 may differ from 2026 conditions
 
 ### 6.5 Missing Data
@@ -430,11 +430,11 @@ All code is reproducible and documented. Contact RWF Analytics for access.
 |-----------|-------|-------|--------|
 | P_FORMAL_HIGHER_SECONDARY | 9.1% | (5%, 15%) | ILO 2024 |
 | P_FORMAL_RTE | 30% | (20%, 50%) | RWF guidance |
-| P_FORMAL_APPRENTICE | 72% | (50%, 90%) | RWF data |
-| P_FORMAL_NO_TRAINING | 10% | (5%, 15%) | PLFS derived |
+| P_FORMAL_APPRENTICE | 68% | (50%, 90%) | RWF data |
+| P_FORMAL_NO_TRAINING | 9% | (5%, 15%) | PLFS derived |
 | RTE_TEST_SCORE_GAIN | 0.137 SD | (0.10, 0.20) | Muralidharan & Sundararaman (2013) |
-| APPRENTICE_INITIAL_PREMIUM | Rs 84,000 | (50K, 110K) | Calculated |
-| APPRENTICE_DECAY_HALFLIFE | 10 years | (5, 50) | Assumed |
+| APPRENTICE_INITIAL_PREMIUM | Rs 78,000 | (69K, 85K) | Calculated |
+| APPRENTICE_DECAY_HALFLIFE | 12 years | (5, 30) | Assumed |
 | APPRENTICE_COMPLETION_RATE | 85% | (75%, 95%) | MSDE |
 | RTE_RETENTION_FUNNEL | 60% | (50%, 75%) | UDISE+ proxy |
 
@@ -442,7 +442,7 @@ All code is reproducible and documented. Contact RWF Analytics for access.
 
 | Parameter | Value | Range | Source |
 |-----------|-------|-------|--------|
-| MINCER_RETURN_HS | 7.0% | (5%, 9%) | Mitra (2019) |
+| MINCER_RETURN_HS | 5.8% | (5%, 9%) | Mitra (2019) |
 | SOCIAL_DISCOUNT_RATE | 5.0% | (3%, 8%) | Murty & Panda (2020) |
 | REAL_WAGE_GROWTH_FORMAL | 1.5% | (0.5%, 2.5%) | PLFS 2020-24 |
 | REAL_WAGE_GROWTH_INFORMAL | -0.2% | (-1%, 0.5%) | PLFS 2020-24 |

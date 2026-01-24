@@ -316,8 +316,13 @@ def check_breakeven_costs():
         # Calculate from LNPV
         lnpv_path = model_dir / "outputs" / "lnpv_results_v4.csv"
         df = pd.read_csv(lnpv_path)
-        df['max_cost_bcr_3_lakhs'] = df['LNPV (₹ Lakhs)'] / 3
-        df['max_cost_bcr_1_lakhs'] = df['LNPV (₹ Lakhs)']
+        # Handle different column naming conventions
+        if 'LNPV (₹ Lakhs)' in df.columns:
+            df['max_cost_bcr_3_lakhs'] = df['LNPV (₹ Lakhs)'] / 3
+            df['max_cost_bcr_1_lakhs'] = df['LNPV (₹ Lakhs)']
+        elif 'lnpv' in df.columns:
+            df['max_cost_bcr_3_lakhs'] = df['lnpv'] / 300000
+            df['max_cost_bcr_1_lakhs'] = df['lnpv'] / 100000
     else:
         df = pd.read_csv(breakeven_path)
 
@@ -403,6 +408,10 @@ def check_regional_heterogeneity():
     if 'Intervention' in df.columns:
         df.columns = [c.lower().replace(' ', '_').replace('(', '').replace(')', '').replace('₹_', '') for c in df.columns]
 
+    # Create lnpv_lakhs column if it doesn't exist
+    if 'lnpv_lakhs' not in df.columns and 'lnpv' in df.columns:
+        df['lnpv_lakhs'] = df['lnpv'] / 100000
+
     criteria = []
 
     # Check for each intervention
@@ -477,7 +486,7 @@ def check_treatment_decay():
 
     Pass Criteria:
     - Apprenticeship premium decays monotonically
-    - If h=10 years, premium at t=10 is ~50% of initial
+    - If h=12 years, premium at t=12 is ~50% of initial
     - RTE premium persists (no explicit decay)
     """
     print("\n" + "="*80)
@@ -740,7 +749,7 @@ Generated: {datetime.now().strftime('%Y-%m-%d %H:%M')}
 
 2. **P_FORMAL_RTE = 30%**: RTE graduates have 3.3× the national baseline (9.1%) for formal sector entry due to selection effects, urban concentration, and private school networks.
 
-3. **Apprenticeship Decay Half-life = 10 years**: No India-specific data exists; this is a model assumption. Sensitivity range [5, 50] years tested.
+3. **Apprenticeship Decay Half-life = 12 years**: No India-specific data exists; this is a model assumption. Sensitivity range [5, 30] years tested.
 
 4. **PLFS Wages as SSOT**: Baseline wages from PLFS 2023-24 are used directly without additional adjustments. This eliminates the over-specification issue.
 
@@ -930,7 +939,7 @@ Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
 
 | Parameter | Symbol | Value | Range | Source |
 |-----------|--------|-------|-------|--------|
-| Mincer Return (HS) | β | 7.0% | (5%, 9%) | Mitra (2019) |
+| Mincer Return (HS) | β | 5.8% | (5%, 9%) | Mitra (2019) |
 | Social Discount Rate | δ | 5-8.5% | (3%, 8%) | Murty & Panda (2020) |
 | P_FORMAL_RTE | P(F|RTE) | 30% | (20%, 50%) | RWF guidance |
 | P_FORMAL_HIGHER_SECONDARY | P(F|HS) | 9.1% | (5%, 15%) | ILO 2024 |

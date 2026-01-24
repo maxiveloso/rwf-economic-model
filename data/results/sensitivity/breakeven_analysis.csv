@@ -1,0 +1,21 @@
+parameter_name,intervention,baseline_value,npv_zero_threshold,margin_pct,interpretation,rank
+P_FORMAL_RTE,rte,0.3,,100,NPV always positive within range,1
+SOCIAL_DISCOUNT_RATE,rte,0.05,,100,NPV always positive within range,2
+REAL_WAGE_GROWTH_FORMAL,rte,0.015,,100,NPV always positive within range,3
+MINCER_RETURN_HS,rte,0.058,,100,NPV always positive within range,4
+EXPERIENCE_LINEAR,rte,0.00885,,100,NPV always positive within range,5
+RTE_TEST_SCORE_GAIN,rte,0.137,,100,NPV always positive within range,6
+TEST_SCORE_TO_YEARS,rte,6.8,,100,NPV always positive within range,7
+EXPERIENCE_QUAD,rte,-0.000123,,100,NPV always positive within range,8
+REAL_WAGE_GROWTH_INFORMAL,rte,-0.002,,100,NPV always positive within range,9
+FORMAL_MULTIPLIER,rte,2.25,,100,NPV always positive within range,10
+SOCIAL_DISCOUNT_RATE,apprenticeship,0.05,,100,NPV always positive within range,1
+P_FORMAL_APPRENTICE,apprenticeship,0.68,,100,NPV always positive within range,2
+REAL_WAGE_GROWTH_FORMAL,apprenticeship,0.015,,100,NPV always positive within range,3
+APPRENTICE_DECAY_HALFLIFE,apprenticeship,12.0,,100,NPV always positive within range,4
+EXPERIENCE_LINEAR,apprenticeship,0.00885,,100,NPV always positive within range,5
+P_FORMAL_NO_TRAINING,apprenticeship,0.09,,100,NPV always positive within range,6
+REAL_WAGE_GROWTH_INFORMAL,apprenticeship,-0.002,,100,NPV always positive within range,7
+EXPERIENCE_QUAD,apprenticeship,-0.000123,,100,NPV always positive within range,8
+MINCER_RETURN_HS,apprenticeship,0.058,,100,NPV always positive within range,9
+APPRENTICE_INITIAL_PREMIUM,apprenticeship,78000.0,,100,NPV always positive within range,10

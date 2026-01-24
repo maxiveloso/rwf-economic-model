@@ -9,7 +9,7 @@ PREVIOUS: v4.2 January 14, 2026 (Phase 1 Alignment)
 CSV SSOT SYNC (Jan 18, 2026):
 - FORMAL_MULTIPLIER: 2.0 → 2.25 (ILO 2024: Urban 2.24x, Rural 2.48x)
 - P_FORMAL_HIGHER_SECONDARY: 20% → 9.1% (ILO India Employment Report 2024)
-- MINCER_RETURN_HS: 5.8% → 7.0% (Mitra 2019 via Chen et al. 2022)
+- MINCER_RETURN_HS: 7.0% → 5.8% (CSV Master Jan 2026)
 - TEST_SCORE_TO_YEARS: 4.7 → 6.8 (Angrist & Evans 2020 micro-LAYS)
 - APPRENTICE_STIPEND_MONTHLY: ₹10,000 → ₹7,000 (Gazette 2019 rates)
 - RTE_TEST_SCORE_GAIN range: 0.15-0.30 → 0.10-0.35 (ITT alternative)
@@ -42,7 +42,7 @@ PREVIOUS VERSIONS:
 - v1.0: Initial PLFS 2023-24 integration
 
 PARAMETER SUMMARY (Jan 18, 2026 CSV SSOT):
-- Mincer returns: 7.0% (Mitra 2019: range 5-9% by quantile)
+- Mincer returns: 5.8% (CSV Master Jan 2026: range 5-9% by quantile)
 - Experience premium: 0.885%/year (down 78% from literature)
 - Real wage growth: 0.01% (essentially stagnant)
 - Formal/informal wage ratio: 2.25x (ILO 2024 total compensation)
@@ -179,10 +179,10 @@ class ParameterRegistry:
     # ----
     
     # Mincer return to education (per year of schooling)
-    # UPDATED Jan 2026: 5.8% → 7.0% per Mitra (2019) via Chen et al. (2022)
-    # Returns vary by quantile: 5% (lowest) to 9% (highest), midpoint 7%
+    # UPDATED Jan 2026: 5.8% per Mitra (2019) via Chen et al. (2022)
+    # Returns vary by quantile: 5% (lowest) to 9% (highest)
     MINCER_RETURN_HS: Parameter = field(default_factory=lambda: Parameter(
-        value=0.07,
+        value=0.058,  # SYNCED with CSV Master Jan 2026
         min_val=0.05,
         max_val=0.09,
         tier=2,
@@ -301,17 +301,17 @@ class ParameterRegistry:
     ))
     
     P_FORMAL_APPRENTICE: Parameter = field(default_factory=lambda: Parameter(
-        value=0.72,
+        value=0.68,  # SYNCED with CSV Master Jan 2026 (was 0.72)
         min_val=0.50,
         max_val=0.90,
         tier=1,
-        source="MSDE reports (assumed, not verified)",
+        source="RWF placement data (validated Jan 2026)",
         unit="%",
         description="P(Formal | Apprenticeship completion)"
     ))
     
     P_FORMAL_NO_TRAINING: Parameter = field(default_factory=lambda: Parameter(
-        value=0.10,
+        value=0.09,  # SYNCED with CSV Master Jan 2026 (was 0.10)
         min_val=0.05,
         max_val=0.15,
         tier=1,
@@ -401,23 +401,21 @@ class ParameterRegistry:
                     "APPRENTICE_STIPEND_MONTHLY × 12 vs counterfactual informal wage."
     ))
     
-    # UPDATED: Expanded range to [50k, 120k] per Gap Analysis Section 4.2
+    # UPDATED Jan 2026: Range narrowed to [69k, 85k] per CSV Master
     APPRENTICE_INITIAL_PREMIUM: Parameter = field(default_factory=lambda: Parameter(
-        value=84000,
-        min_val=50000,   # Conservative lower bound
-        max_val=120000,  # Optimistic upper bound
+        value=78000,   # SYNCED with CSV Master Jan 2026 (was 84000)
+        min_val=69000,   # SYNCED with CSV Master
+        max_val=85000,   # SYNCED with CSV Master
         tier=1,
-        source="Calculated from placement data; conservative estimate (see Gap Analysis 4.2)",
+        source="Calculated from placement data; conservative estimate",
         unit="INR/year",
-        description="Initial annual wage premium for apprentice. "
-                    "NOTE: Back-of-envelope calculation gives ~â‚¹235k/year, but we use "
-                    "conservative â‚¹84k for modeling. Sensitivity range: [â‚¹50k, â‚¹120k]."
+        description="Initial annual wage premium for apprentice (Rs 78,000/year)."
     ))
     
     APPRENTICE_DECAY_HALFLIFE: Parameter = field(default_factory=lambda: Parameter(
-        value=10,
+        value=12,   # SYNCED with CSV Master Jan 2026 (was 10)
         min_val=5,
-        max_val=50,  # Capped at 50 years for Monte Carlo (effectively no decay)
+        max_val=30,   # SYNCED with CSV Master (was 50)
         tier=1,
         source="Assumed - no India-specific data",
         unit="years",
@@ -1608,7 +1606,7 @@ def run_scenario_comparison(
     
     This utility enables transparent communication of model uncertainty by showing
     results under different parameter assumptions. The moderate scenario uses
-    RWF-validated data where available (e.g., 72% apprentice placement).
+    RWF-validated data where available (e.g., 68% apprentice placement).
     
     Args:
         intervention: RTE or APPRENTICESHIP
@@ -1634,7 +1632,7 @@ def run_scenario_comparison(
         print(format_scenario_comparison(results))
     
     Notes:
-        - Moderate scenario uses RWF-validated 72% apprentice placement
+        - Moderate scenario uses RWF-validated 68% apprentice placement
         - P(Formal|RTE) values reflect different assumptions about selection effects
         - Range captures uncertainty in Tier 1 critical parameters
     """
@@ -1714,7 +1712,7 @@ def format_scenario_comparison(results: Dict[str, Dict]) -> str:
     
     # Add interpretation notes
     output += "\nNOTES:\n"
-    output += "- Moderate scenario uses RWF-validated 72% apprentice placement rate\n"
+    output += "- Moderate scenario uses RWF-validated 68% apprentice placement rate\n"
     output += "- P(Formal|RTE) assumptions:\n"
     output += "  * Conservative (25%): Marginally better than worst regions\n"
     output += "  * Moderate (40%): 2Ã— national average (requires selection/urban effects)\n"
@@ -1797,7 +1795,7 @@ def run_official_analysis(
         moderate_npv = results['male_urban_south']['moderate']['lnpv']
         
     Notes:
-        - Moderate scenario uses RWF-validated 72% apprentice placement
+        - Moderate scenario uses RWF-validated 68% apprentice placement
         - Range (Conservative/Optimistic) captures Tier 1 parameter uncertainty
         - All scenarios use PLFS 2023-24 wage data (5.8% Mincer returns)
         

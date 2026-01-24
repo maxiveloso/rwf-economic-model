@@ -1,0 +1,9 @@
+check_name,status,details,timestamp
+Check 1: Age-Wage Profiles,✅ PASS,Formal growth 0.5-3%: Actual: 1.91%; Informal growth -2% to 1%: Actual: 0.21%; Formal peak age 40-62: Actual: 61; Informal peak age 40-62: Actual: 50; No extreme formal decline: Max decline: 1.44%; No extreme informal decline: Max decline: -0.26%; Formal > Informal always: Ratio at year 0: 2.44x,2026-01-24T13:12:14.321485
+Check 2: NPV Magnitude,✅ PASS,RTE: ₹5.2L-₹28.7L; App: ₹18.6L-₹52.3L,2026-01-24T13:12:14.325261
+Check 3: Break-Even Costs,✅ PASS,Range: ₹1.7L - ₹17.4L (BCR=3),2026-01-24T13:12:14.328216
+Check 4: Regional Heterogeneity,❌ FAIL,South top-ranked; Urban > Rural; Gender ratio nan,2026-01-24T13:12:14.334599
+Check 5: Treatment Decay,✅ PASS,Half-life: 12 years; Decay verified,2026-01-24T13:12:14.490868
+Check 6: Sensitivity Consistency,✅ PASS,Scenario ordering OK; MC close to baseline; Top drivers verified,2026-01-24T13:12:14.494183
+Check 7: Assumptions Documented,✅ PASS,All parameters documented; 9 Tier 1 parameters identified,2026-01-24T13:12:14.494474
+Check 8: Decomposition,❌ FAIL,Decomposition file not found,2026-01-24T13:12:14.494504

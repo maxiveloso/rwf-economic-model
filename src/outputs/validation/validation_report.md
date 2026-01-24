@@ -1,9 +1,9 @@
 # Milestone 4: Validation & QA Report
-Generated: 2026-01-23 11:23:12
+Generated: 2026-01-24 13:12:14
 
 ## Summary
 
-**Overall Result: 8/8 checks passed**
+**Overall Result: 6/8 checks passed**
 
 ## Detailed Results
 
@@ -27,13 +27,13 @@ Generated: 2026-01-23 11:23:12
 
 | Criterion | Status | Details |
 |-----------|--------|--------|
-| All LNPVs positive | ✅ | Min: ₹3.9L |
-| RTE min >= ₹1L | ✅ | Actual min: ₹3.9L |
-| RTE max <= ₹50L | ✅ | Actual max: ₹18.0L |
-| Apprenticeship min >= ₹5L | ✅ | Actual min: ₹19.6L |
-| Apprenticeship max <= ₹100L | ✅ | Actual max: ₹55.2L |
+| All LNPVs positive | ✅ | Min: ₹5.2L |
+| RTE min >= ₹1L | ✅ | Actual min: ₹5.2L |
+| RTE max <= ₹50L | ✅ | Actual max: ₹28.7L |
+| Apprenticeship min >= ₹5L | ✅ | Actual min: ₹18.6L |
+| Apprenticeship max <= ₹100L | ✅ | Actual max: ₹52.3L |
 | Apprenticeship avg > RTE avg | ✅ | App: ₹34.4L vs RTE: ₹14.0L |
-| No outliers (>3 SD) | ✅ | Median: ₹18.8L, SD: ₹15.7L |
+| No outliers (>3 SD) | ✅ | Median: ₹22.2L, SD: ₹13.1L |
 
 ### Check 3: Break-Even Costs
 
@@ -41,24 +41,24 @@ Generated: 2026-01-23 11:23:12
 
 | Criterion | Status | Details |
 |-----------|--------|--------|
-| Min break-even >= ₹1L | ✅ | Actual: ₹1.9L |
-| Max break-even <= ₹25L | ✅ | Actual: ₹18.5L |
-| South/West > North/East | ✅ | S/W: ₹9.9L vs N/E: ₹7.2L |
-| Urban > Rural | ✅ | Urban: ₹10.5L vs Rural: ₹6.6L |
-| Apprenticeship can sustain ₹5L+ cost | ✅ | Avg break-even: ₹12.1L |
+| Min break-even >= ₹1L | ✅ | Actual: ₹1.7L |
+| Max break-even <= ₹25L | ✅ | Actual: ₹17.4L |
+| South/West > North/East | ✅ | S/W: ₹9.3L vs N/E: ₹6.8L |
+| Urban > Rural | ✅ | Urban: ₹9.9L vs Rural: ₹6.2L |
+| Apprenticeship can sustain ₹5L+ cost | ✅ | Avg break-even: ₹11.5L |
 
 ### Check 4: Regional Heterogeneity
 
-**Status:** ✅ PASS
+**Status:** ❌ FAIL
 
 | Criterion | Status | Details |
 |-----------|--------|--------|
-| rte: South rank #1-2 | ✅ | Actual rank: #1 |
-| rte: East rank #3-4 | ✅ | Actual rank: #4 |
-| apprenticeship: South rank #1-2 | ✅ | Actual rank: #1 |
-| apprenticeship: East rank #3-4 | ✅ | Actual rank: #4 |
+| rte: South rank #1-2 | ❌ | Actual rank: #5 |
+| rte: East rank #3-4 | ❌ | Actual rank: #0 |
+| apprenticeship: South rank #1-2 | ❌ | Actual rank: #5 |
+| apprenticeship: East rank #3-4 | ❌ | Actual rank: #0 |
 | Urban > Rural all regions | ✅ | All passed |
-| Gender ratio 0.5-2.0 | ✅ | M/F ratio: 1.34 |
+| Gender ratio 0.5-2.0 | ❌ | M/F ratio: nan |
 
 ### Check 5: Treatment Decay
 
@@ -76,10 +76,7 @@ Generated: 2026-01-23 11:23:12
 
 | Criterion | Status | Details |
 |-----------|--------|--------|
-| Cons ≤ Mod ≤ Opt all scenarios | ✅ | Ordering verified |
-| MC median ≈ Baseline (<15%) | ✅ | Diff: 11.0% |
-| RTE top driver: P_FORMAL_RTE | ✅ | Top 3: P_FORMAL_RTE, SOCIAL_DISCOUNT_RATE, REAL_WAGE_GROWTH_FORMAL |
-| App top driver: P_FORMAL_APPRENTICE | ✅ | Top 3: P_FORMAL_APPRENTICE, SOCIAL_DISCOUNT_RATE, REAL_WAGE_GROWTH_FORMAL |
+| Cons ≤ Mod ≤ Opt (sample) | ✅ | Cons: ₹8.3L ≤ Mod: ₹22.2L ≤ Opt: ₹67.1L |
 
 ### Check 7: Assumptions Documented
 
@@ -93,14 +90,10 @@ Generated: 2026-01-23 11:23:12
 
 ### Check 8: Decomposition
 
-**Status:** ✅ PASS
+**Status:** ❌ FAIL
 
 | Criterion | Status | Details |
 |-----------|--------|--------|
-| Placement + Mincer = Total (±1%) | ✅ | Max diff: 0.00% |
-| Placement > Mincer all scenarios | ✅ | Avg placement share: 79.2% |
-| Placement share 70-90% | ✅ | Actual: 79.2% |
-| Both effects positive | ✅ | Placement: True, Mincer: True |
 
 
 ## Deliverables Generated

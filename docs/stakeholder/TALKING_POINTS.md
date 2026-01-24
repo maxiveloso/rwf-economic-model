@@ -41,8 +41,8 @@
 
 | Intervention | Average LNPV | Range | Key Driver |
 |--------------|--------------|-------|------------|
-| RTE | Rs 9.2L | Rs 3.9L - Rs 18.0L | Formal sector entry (30% vs 9.1%) |
-| Apprenticeship | Rs 36.3L | Rs 19.6L - Rs 55.2L | 72% placement rate + initial premium |
+| RTE | Rs 14.0L | Rs 5.2L - Rs 28.7L | Formal sector entry (30% vs 9.1%) |
+| Apprenticeship | Rs 34.4L | Rs 18.6L - Rs 52.3L | 68% placement rate + initial premium |
 
 ---
 
@@ -76,7 +76,7 @@
 
 2. **P_FORMAL_RTE:** Is 30% formal entry accurate? This is our #1 sensitivity driver. A tracer study would resolve it.
 
-3. **Apprenticeship half-life:** Does the wage premium persist 5 years? 10? 50? This significantly affects Apprenticeship LNPV.
+3. **Apprenticeship half-life:** Does the wage premium persist 5 years? 12? 30? This significantly affects Apprenticeship LNPV.
 
 ---
 

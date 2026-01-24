@@ -34,18 +34,18 @@ This analysis estimates the lifetime economic benefits of RightWalk Foundation's
 ## 2. Key Findings
 
 ### RTE Intervention
-- **LNPV Range:** Rs 3.85L - Rs 18.01L per beneficiary
-  - Highest: Urban South (Rs 18.0L male, Rs 13.5L female)
-  - Lowest: Rural East (Rs 5.7L male, Rs 3.9L female)
-- **Average LNPV:** Rs 9.2L
+- **LNPV Range:** Rs 5.2L - Rs 28.7L per beneficiary
+  - Highest: Urban South (Rs 28.7L male, Rs 22.1L female)
+  - Lowest: Rural East (Rs 7.7L male, Rs 5.2L female)
+- **Average LNPV:** Rs 14.0L
 - **Decomposition:** ~79% from Placement Effect (30% vs 9.1% formal entry), ~21% from Mincer Effect
 
 ### Apprenticeship Intervention
-- **LNPV Range:** Rs 19.64L - Rs 55.21L per beneficiary
-  - Highest: Urban South (Rs 55.2L male, Rs 43.6L female)
-  - Lowest: Rural East (Rs 28.3L male, Rs 19.6L female)
-- **Average LNPV:** Rs 36.3L
-- **Key Driver:** 72% formal sector placement rate
+- **LNPV Range:** Rs 18.6L - Rs 52.3L per beneficiary
+  - Highest: Urban South (Rs 52.3L male, Rs 41.2L female)
+  - Lowest: Rural East (Rs 26.9L male, Rs 18.6L female)
+- **Average LNPV:** Rs 34.4L
+- **Key Driver:** 68% formal sector placement rate
 
 ### Break-Even Cost Thresholds
 
@@ -96,7 +96,7 @@ We apply a Lifetime Net Present Value (LNPV) framework that computes:
 
 1. **Causal Identification:** Selection-on-observables assumption may overstate effects by 20-40% if motivated families self-select into programs
 2. **Geographic Granularity:** State/district-level effects require microdata not available in this PoC
-3. **Wage Persistence (h):** Apprenticeship premium decay rate (10-year half-life) is assumed; could be faster or slower
+3. **Wage Persistence (h):** Apprenticeship premium decay rate (12-year half-life) is assumed; could be faster or slower
 4. **External Validity:** Literature-based parameters may not generalize to RWF-specific beneficiaries
 5. **No Beneficiary Data:** Estimates use population averages, not actual RWF participant outcomes
 6. **P_FORMAL Split:** 30% RTE vs 9.1% control based on RWF guidance, not observed longitudinal data

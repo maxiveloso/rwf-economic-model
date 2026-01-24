@@ -23,11 +23,11 @@ import argparse
 # Add parent directory to path for imports
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from model.economic_core_v4 import (
-    LifetimeNPVCalculator, ParameterRegistry, 
+from economic_core_v4 import (
+    LifetimeNPVCalculator, ParameterRegistry,
     Gender, Location, Region, Intervention
 )
-from model.parameter_registry_v3 import Parameter
+from parameter_registry_v3 import Parameter
 
 # ============================================================================
 # CONFIGURATION

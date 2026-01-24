@@ -1,5 +1,5 @@
 # Model Assumptions Documentation
-Generated: 2026-01-23 11:23
+Generated: 2026-01-24 13:12
 
 ## Parameter Sources and Assumptions
 

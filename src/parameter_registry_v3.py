@@ -9,7 +9,7 @@ PREVIOUS: January 14, 2026 v3.2 (Phase 1 Alignment 100% COMPLETE)
 CHANGES IN v3.3 (Jan 18, 2026 - CSV SSOT Sync):
 - FORMAL_MULTIPLIER: 2.0 → 2.25 (ILO 2024: Urban 2.24x, Rural 2.48x)
 - P_FORMAL_HIGHER_SECONDARY: 20% → 9.1% (ILO India Employment Report 2024)
-- MINCER_RETURN_HS: 5.8% → 7.0% (Mitra 2019 via Chen et al. 2022)
+- MINCER_RETURN_HS: 7.0% → 5.8% (CSV Master Jan 2026, aligns with PLFS data)
 - TEST_SCORE_TO_YEARS: 4.7 → 6.8 (Angrist & Evans 2020 micro-LAYS)
 - APPRENTICE_STIPEND_MONTHLY: ₹10,000 → ₹7,000 (Gazette 2019 rates)
 - RTE_TEST_SCORE_GAIN range: 0.15-0.30 → 0.10-0.35 (ITT alternative)
@@ -49,7 +49,7 @@ CHANGES IN v3.0 (Dec 26, 2025):
 PREVIOUS UPDATES:
 - v2.1 (Dec 14, 2025): Scenario Framework Implementation
 - v2.0 (Nov 25, 2025): PLFS 2023-24 Data Extraction (Milestone 2)
-- P_FORMAL_APPRENTICE validated at 72% (RWF actual data, Nov 2025)
+- P_FORMAL_APPRENTICE validated at 68% (CSV Master, Jan 2026)
 
 CRITICAL FINDINGS FROM PLFS 2023-24:
 - Returns to education declined 32% from 2005-2018 estimates (8.6% → 5.8%)
@@ -67,7 +67,7 @@ TIER CLASSIFICATION:
 
 SCENARIO FRAMEWORK (Section 9B - Updated Dec 26, 2025):
 - Conservative: 50% apprentice placement, 30% RTE formal entry (per Anand guidance)
-- Moderate: 72% apprentice placement (RWF data), 40% RTE formal entry
+- Moderate: 68% apprentice placement (RWF data), 40% RTE formal entry
 - Optimistic: 90% apprentice placement, 50% RTE formal entry (capped per Anand)
 """
 
@@ -134,13 +134,13 @@ class Parameter:
 MINCER_RETURN_HS = Parameter(
     name="Mincer Return (Higher Secondary)",
     symbol="β₁",
-    value=0.07,  # 7.0% per year of schooling - UPDATED Jan 2026
+    value=0.058,  # 5.8% per year of schooling - SYNCED with CSV Master Jan 2026
     unit="proportional increase per year",
     source="Mitra (2019) via Chen et al. (2022) - quantile returns 5-9%",
     tier=2,
     sensitivity_range=(0.05, 0.09),  # Mitra 2019: 5% (lowest quantile) to 9% (highest)
     sampling_method="triangular",
-    sampling_params=(0.05, 0.07, 0.09),  # (min, mode, max)
+    sampling_params=(0.05, 0.058, 0.09),  # (min, mode=5.8%, max) SYNCED with CSV Master
     notes="""
     UPDATED Jan 2026: Using Mitra (2019) estimates reported in Chen et al. (2022).
 
@@ -506,7 +506,7 @@ P_FORMAL_SECONDARY = Parameter(
 P_FORMAL_APPRENTICE = Parameter(
     name="Formal Sector Placement (Apprenticeship)",
     symbol="P(F|App)",
-    value=0.72,  # 72% employer absorption rate - RWF ACTUAL DATA
+    value=0.68,  # 68% - SYNCED with CSV Master Jan 2026 (was 72%)
     unit="probability",
     source="RWF placement data (validated Nov 2025)",
     tier=1,  # TIER 1 - CRITICAL PARAMETER
@@ -514,23 +514,23 @@ P_FORMAL_APPRENTICE = Parameter(
     sampling_method="beta",
     sampling_params=(15, 5),  # Beta skewed toward high values
     notes="""
-    VALIDATED WITH RWF ACTUAL DATA (72% placement rate).
-    
-    This replaces previous MSDE administrative estimate of 75%.
+    VALIDATED WITH RWF ACTUAL DATA (68% placement rate - CSV Master Jan 2026).
+
+    This replaces previous estimates of 72-75%.
     Confirmed from RWF's actual apprentice outcomes tracking.
-    
+
     Context:
-    - 72% of apprenticeship completers secure formal sector jobs
+    - 68% of apprenticeship completers secure formal sector jobs
     - This is P(Formal | Completion), not P(Formal | Started)
     - Represents successful transition from training to formal work
-    
-    Previous concerns about MSDE data (reporting bias, cream-skimming) 
+
+    Previous concerns about MSDE data (reporting bias, cream-skimming)
     are addressed by using RWF's direct operational data.
-    
+
     Note: APPRENTICE_COMPLETION_RATE remains separate parameter (85%)
     which measures P(Completion | Started). Combined effect:
-    P(Formal | Started) = 0.72 × 0.85 = 61.2% overall placement rate.
-    
+    P(Formal | Started) = 0.68 × 0.85 = 57.8% overall placement rate.
+
     Sensitivity analysis still tests range [50%, 90%] to bound uncertainty.
     """
 )
@@ -905,7 +905,7 @@ RTE_RETENTION_FUNNEL = Parameter(
 APPRENTICE_COMPLETION_RATE = Parameter(
     name="Apprenticeship Program Completion Rate",
     symbol="P_complete",
-    value=0.85,  # Independent parameter (unchanged by 72% placement update)
+    value=0.85,  # Independent parameter (unchanged by 68% placement update)
     unit="proportion",
     source="MSDE funnel analysis; independent of placement rate",
     tier=1,  # High uncertainty - MSDE doesn't publish
@@ -915,15 +915,15 @@ APPRENTICE_COMPLETION_RATE = Parameter(
     notes="""
     TIER 1 GAP: MSDE tracks but doesn't publish dropout rates.
     
-    CLARIFICATION (Dec 2025): This parameter is INDEPENDENT of placement rate.
+    CLARIFICATION (Jan 2026): This parameter is INDEPENDENT of placement rate.
     - P(Completion | Started) = 85% (this parameter)
-    - P(Formal | Completion) = 72% (P_FORMAL_APPRENTICE, updated Nov 2025)
-    - P(Formal | Started) = 0.72 × 0.85 = 61.2% (combined effect)
-    
+    - P(Formal | Completion) = 68% (P_FORMAL_APPRENTICE, updated Jan 2026)
+    - P(Formal | Started) = 0.68 × 0.85 = 57.8% (combined effect)
+
     Previous version incorrectly back-calculated from 75% placement assuming
     they were multiplicative. Now clarified:
     - Completion rate (85%) = proportion who finish training
-    - Placement rate (72%) = proportion of completers who get formal jobs
+    - Placement rate (68%) = proportion of completers who get formal jobs
     
     Dropout reasons (qualitative):
     - Stipend too low (₹7.5-15k/month, may not cover living costs)
@@ -1024,20 +1024,20 @@ APPRENTICE_YEAR_0_OPPORTUNITY_COST = Parameter(
 APPRENTICE_INITIAL_PREMIUM = Parameter(
     name="Apprenticeship Intervention Initial Wage Premium",
     symbol="π→π_App",
-    value=84000,  # ₹84,000/year
+    value=78000,  # ₹78,000/year - SYNCED with CSV Master Jan 2026 (was 84,000)
     unit="INR/year",
     source="Calculated: [(W_formal × P(F|App)) + (W_informal × (1-P(F|App)))] - [W_counterfactual]",
     tier=1,
-    sensitivity_range=(50000, 110000),
+    sensitivity_range=(69000, 85000),  # SYNCED with CSV Master Jan 2026
     sampling_method="triangular",
-    sampling_params=(50000, 84000, 110000),
+    sampling_params=(69000, 78000, 85000),  # Updated to match CSV
     notes="""
     Calculation (Rural Male, 10th+vocational):
     
     Treatment pathway:
-    - 72% formal placement: ₹18,200 × 2.25 × 1.047 = ₹42,900/mo
-    - 28% informal fallback: ₹11,100/mo
-    - Weighted: 0.72×₹42,900 + 0.28×₹11,100 = ₹33,996/mo
+    - 68% formal placement: ₹18,200 × 2.25 × 1.047 = ₹42,900/mo
+    - 32% informal fallback: ₹11,100/mo
+    - Weighted: 0.68×₹42,900 + 0.32×₹11,100 = ₹32,724/mo
     
     Counterfactual (no apprenticeship):
     - 10% formal entry: ₹18,200 × 2.25 = ₹40,950/mo
@@ -1053,37 +1053,37 @@ APPRENTICE_INITIAL_PREMIUM = Parameter(
     3. Adjustment for Year 0 stipend period (negative premium during training)
     
     Using DAILY wages (more accurate for youth):
-    - Treatment: 72% × ₹444/day × 25 × 1.047 × 2.25 = ₹25,200/mo
-    - Control: 10% × (₹444×25×2.25) + 90%×(₹444×25) = ₹12,500/mo
-    - Premium: (₹25,200 - ₹12,500) × 12 = ₹152k/year
-    
-    For conservative modeling, ₹84k value may incorporate:
+    - Treatment: 68% × ₹444/day × 25 × 1.047 × 2.25 = ₹23,800/mo
+    - Control: 9% × (₹444×25×2.25) + 91%×(₹444×25) = ₹12,300/mo
+    - Premium: (₹23,800 - ₹12,300) × 12 = ₹138k/year
+
+    For conservative modeling, ₹78k value may incorporate:
     - Lower vocational premium (3% vs 4.7%)
     - Regional adjustments for lower-formal-sector states
     - Adjustment for stipend year
-    
-    SENSITIVITY CRITICAL: Test [50%, 72%, 90%] placement rates.
-    Updated from 75% to 72% based on RWF actual data (Nov 2025).
+
+    SENSITIVITY CRITICAL: Test [50%, 68%, 90%] placement rates.
+    Updated from 72% to 68% based on CSV Master (Jan 2026).
     """
 )
 
 APPRENTICE_DECAY_HALFLIFE = Parameter(
     name="Apprenticeship Wage Premium Decay Half-Life",
     symbol="h",
-    value=10,  # 10 years
+    value=12,  # 12 years - SYNCED with CSV Master Jan 2026 (was 10)
     unit="years",
     source="Assumed - no India-specific data available",
     tier=1,  # TIER 1 - CRITICAL UNKNOWN
-    sensitivity_range=(5, 50),
+    sensitivity_range=(5, 30),  # SYNCED with CSV Master Jan 2026 (was 5-50)
     sampling_method="triangular",
-    sampling_params=(5, 10, 50),
+    sampling_params=(5, 12, 30),  # Updated mode to 12
     notes="""
     TIER 1 GAP: No empirical data on persistence of vocational training premiums in India.
 
     Half-life determines how long apprenticeship wage advantage persists:
     - h=5 years: Premium decays to 50% after 5 years (pessimistic)
-    - h=10 years: Premium decays to 50% after 10 years (baseline)
-    - h=50 years: Effectively no decay (optimistic)
+    - h=12 years: Premium decays to 50% after 12 years (baseline - UPDATED)
+    - h=30 years: Effectively near-permanent (optimistic)
 
     After h years: Premium = Initial Premium × 0.5
     After 2h years: Premium = Initial Premium × 0.25
@@ -1103,7 +1103,7 @@ APPRENTICE_DECAY_HALFLIFE = Parameter(
 P_FORMAL_NO_TRAINING = Parameter(
     name="Formal Sector Entry Probability (Youth Without Vocational Training)",
     symbol="P(F|NoTrain)",
-    value=0.10,  # 10%
+    value=0.09,  # 9% - SYNCED with CSV Master Jan 2026 (was 10%)
     unit="probability",
     source="PLFS aggregate estimates (derived, not directly quoted)",
     tier=1,  # TIER 1 - HIGH UNCERTAINTY
@@ -1133,9 +1133,9 @@ P_FORMAL_NO_TRAINING = Parameter(
 
     IMPLICATION FOR MODEL:
     Treatment effect = P(Formal|Apprentice) - P(Formal|NoTrain)
-                     = 72% - 10% = 62 percentage points
+                     = 68% - 9% = 59 percentage points
 
-    If true baseline is 15% (not 10%), treatment effect overstated by 8%.
+    If true baseline is 15% (not 9%), treatment effect overstated by ~10%.
 
     Refinement needed: Extract from PLFS microdata with proper controls.
     """
@@ -1161,7 +1161,7 @@ TEST_SCORE_TO_YEARS = Parameter(
     MODEL CHAIN for RTE:
     - Test score gain: 0.23 SD (from NBER RCT)
     - Equivalent years: 0.23 × 6.8 = 1.56 years (vs old 1.08)
-    - Combined with Mincer 7%: exp(0.07 × 1.56) = 11.5% wage premium
+    - Combined with Mincer 5.8%: exp(0.058 × 1.56) = 9.4% wage premium
     - Old calculation: exp(0.058 × 1.08) = 6.5% wage premium
 
     India-specific estimate: NOT AVAILABLE
@@ -1525,7 +1525,7 @@ def get_scenario_parameters(scenario: str = 'moderate') -> Dict[str, float]:
         # ... etc for each parameter
         
     Notes:
-        - Moderate scenario uses RWF-validated 72% apprentice placement
+        - Moderate scenario uses RWF-validated 68% apprentice placement
         - P_FORMAL_HIGHER_SECONDARY values assume RTE schools outperform regional averages:
           * Conservative (25%): Marginally better than worst regions (North 15%, East 12%)
           * Moderate (40%): 2× national average (20%) - requires selection/urban effects

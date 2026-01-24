@@ -38,7 +38,7 @@ A 1-2 year longitudinal tracer study tracking 200-300 beneficiaries to measure a
 
 This would:
 1. **Validate P_FORMAL assumptions** - Is 30% formal entry for RTE graduates accurate?
-2. **Pin down wage persistence (h)** - Does the Apprenticeship premium really last 10+ years?
+2. **Pin down wage persistence (h)** - Does the Apprenticeship premium really last 12+ years?
 3. **Measure actual wages** - Are our PLFS-based projections realistic?
 
 **Cost:** Approximately Rs 5-8 lakhs
@@ -124,8 +124,8 @@ Because Apprenticeship benefits depend critically on whether vocational skills r
 | Half-Life | Interpretation | LNPV Impact |
 |-----------|---------------|-------------|
 | h=5 years | Skills become obsolete quickly (e.g., rapidly changing technology) | -40% |
-| h=10 years | Moderate skill persistence (baseline assumption) | Baseline |
-| h=50 years | Durable skills (e.g., electrical, plumbing, welding) | +30% |
+| h=12 years | Moderate skill persistence (baseline assumption) | Baseline |
+| h=30 years | Durable skills (e.g., electrical, plumbing, welding) | +30% |
 
 RTE doesn't have this problem because education creates a permanent credential that doesn't depreciate.
 
@@ -201,7 +201,7 @@ Our estimates are consistent with global benchmarks:
 | Vocational training (ILO) | 2:1 - 6:1 | Apprenticeship: 4:1 - 12:1 |
 | Job training programs (J-PAL) | 1:1 - 4:1 | Within range |
 
-Our Apprenticeship estimates are on the higher end, which is plausible given RWF's 72% placement rate (well above national average). RTE estimates are conservative, reflecting our honest uncertainty about the causal pathway.
+Our Apprenticeship estimates are on the higher end, which is plausible given RWF's 68% placement rate (well above national average). RTE estimates are conservative, reflecting our honest uncertainty about the causal pathway.
 
 ---
 
@@ -209,12 +209,12 @@ Our Apprenticeship estimates are on the higher end, which is plausible given RWF
 
 | Metric | RTE | Apprenticeship |
 |--------|-----|----------------|
-| Average LNPV | Rs 9.2L | Rs 36.3L |
-| LNPV Range | Rs 3.9L - Rs 18.0L | Rs 19.6L - Rs 55.2L |
-| Max Cost at BCR=3:1 (mean) | Rs 3.1L | Rs 12.1L |
+| Average LNPV | Rs 14.0L | Rs 34.4L |
+| LNPV Range | Rs 5.2L - Rs 28.7L | Rs 18.6L - Rs 52.3L |
+| Max Cost at BCR=3:1 (mean) | Rs 4.7L | Rs 11.5L |
 | Decomposition | 80% Placement / 20% Mincer | N/A |
 | Key Driver | P_FORMAL_RTE | P_FORMAL_APPRENTICE, h |
-| Validation Status | 8/8 checks passed | 8/8 checks passed |
+| Validation Status | 6/8 checks passed | 6/8 checks passed |
 
 ---
 
