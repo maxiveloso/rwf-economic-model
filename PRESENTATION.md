@@ -145,6 +145,21 @@ With a 12-year half-life:
 - Year 24: Premium at 25% of initial
 - Year 36: Premium at 12.5% of initial
 
+The premium decays exponentially:
+```
+π(t) = π₀ × exp(-λt)
+
+Where:
+- π₀ = initial premium (Rs 78,000/year)
+- λ = ln(2) / h = 0.693 / 12 ≈ 0.0578 (decay rate)
+- h = 12 years (half-life)
+- t = years since intervention
+```
+Or equivalently:
+```
+π(t) = π₀ × (0.5)^(t/h)
+```
+
 **Why Apprenticeship NPV is higher than RTE despite decay:** The 68% formal placement rate (vs. 9% counterfactual) creates a massive 59 percentage point advantage that dominates the calculation.
 
 ---
