@@ -1,7 +1,7 @@
 # RWF Economic Impact Model
 ## Proof-of-Concept Results for Founders
 
-**Version 4.3 | January 2026**
+**January 2026**
 
 ---
 
