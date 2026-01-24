@@ -11,7 +11,7 @@ import os
 # Add src to path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src'))
 
-from economic_core import run_baseline_scenarios
+from economic_core_v4 import run_baseline_scenarios
 
 def main():
     print("=" * 60)

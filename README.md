@@ -90,10 +90,10 @@ rwf-economic-model/
 │
 ├── src/                         # Core source code
 │   ├── __init__.py
-│   ├── parameter_registry.py    # 77 parameters (SSOT)
-│   ├── economic_core.py         # LNPV calculation engine
-│   ├── sensitivity_analysis.py  # Sensitivity & Monte Carlo
-│   └── validation.py            # 8 QA validation checks
+│   ├── parameter_registry_v3.py # 77 parameters (SSOT)
+│   ├── economic_core_v4.py      # LNPV calculation engine
+│   ├── sensitivity_analysis_v2.py # Sensitivity & Monte Carlo
+│   └── m4_validation_qa.py      # 8 QA validation checks
 │
 ├── data/
 │   ├── parameters/              # Parameter registry CSV

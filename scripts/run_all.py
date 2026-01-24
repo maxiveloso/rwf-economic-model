@@ -29,7 +29,7 @@ def main():
     # Step 1: Baseline
     print("[1/3] Running baseline LNPV calculations...")
     print("-" * 50)
-    from economic_core import run_baseline_scenarios
+    from economic_core_v4 import run_baseline_scenarios
     baseline_results = run_baseline_scenarios()
 
     output_dir = os.path.join(os.path.dirname(__file__), '..', 'data', 'results')
@@ -49,7 +49,7 @@ def main():
     # Step 2: Sensitivity Analysis
     print("[2/3] Running sensitivity analysis...")
     print("-" * 50)
-    from sensitivity_analysis import run_comprehensive_sensitivity
+    from sensitivity_analysis_v2 import run_comprehensive_sensitivity
     run_comprehensive_sensitivity(output_dir=output_dir)
     print("  Completed: Tornado, Monte Carlo, Break-even, Decomposition")
     print()
@@ -57,7 +57,7 @@ def main():
     # Step 3: Validation
     print("[3/3] Running validation checks...")
     print("-" * 50)
-    from validation import run_all_validation_checks
+    from m4_validation_qa import run_all_validation_checks
     validation_dir = os.path.join(output_dir, 'validation')
     os.makedirs(validation_dir, exist_ok=True)
     validation_results = run_all_validation_checks(output_dir=validation_dir)

@@ -16,7 +16,7 @@ import os
 # Add src to path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src'))
 
-from sensitivity_analysis import run_comprehensive_sensitivity
+from sensitivity_analysis_v2 import run_comprehensive_sensitivity
 
 def main():
     print("=" * 60)
