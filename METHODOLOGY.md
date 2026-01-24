@@ -60,8 +60,8 @@ Private School → Test Score Gains → Educational Credentials → Formal Secto
 | Test score gain | 0.137 SD | NBER RCT (ITT estimate) |
 | SD to years conversion | 6.8 | Angrist & Evans 2020 |
 | Mincer return | 5.8% | Chen et al. 2022 (PLFS 2018-19) |
-| P(Formal | RTE) | 30% | RWF guidance |
-| P(Formal | Control) | 9.1% | ILO India 2024 |
+| P(Formal \ RTE) | 30% | RWF guidance |
+| P(Formal \ Control) | 9.1% | ILO India 2024 |
 
 **Counterfactual (Control Group):**
 
@@ -112,7 +112,7 @@ Apprenticeship → Skill Certification → Employer Absorption → Formal Wages 
 | Placement rate (formal) | 68% | RWF program data |
 | Initial wage premium | Rs 78,000/year | Calculated |
 | Premium half-life | 12 years | Assumed (range: 5-30) |
-| P(Formal | No Training) | 9% | ILO India 2024 |
+| P(Formal \ No Training) | 9% | ILO India 2024 |
 
 **Counterfactual (Control Group):**
 
