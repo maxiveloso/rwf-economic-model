@@ -130,9 +130,11 @@ rwf-economic-model/
 
 | Document | Description | Audience |
 |----------|-------------|----------|
+| [PRESENTATION.md](PRESENTATION.md) | **Founders presentation** with embedded figures | Founders, Leadership |
 | [EXECUTIVE_SUMMARY.md](docs/EXECUTIVE_SUMMARY.md) | 2-page summary with key findings | Board, Funders |
 | [TECHNICAL_APPENDIX.md](docs/TECHNICAL_APPENDIX.md) | Full methodology & parameters | Technical reviewers |
 | [METHODOLOGY.md](METHODOLOGY.md) | Causal framework & economic theory | Researchers |
+| [Model Chain Diagrams](docs/model_chain_diagrams.md) | Step-by-step parameter flow calculations | Technical deep-dive |
 | [VALIDATION_REPORT.md](docs/VALIDATION_REPORT.md) | 8/8 QA checks passed | Quality assurance |
 | [Stakeholder Q&A](docs/stakeholder/QA_GUIDE.md) | 12 anticipated questions | Meeting prep |
 
