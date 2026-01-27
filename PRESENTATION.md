@@ -24,6 +24,9 @@ Using a **Lifetime Net Present Value (LNPV)** model calibrated with publicly ava
 |--------|-----|----------------|
 | **Average LNPV** | Rs 14.0 Lakhs | Rs 34.4 Lakhs |
 | **Range** | Rs 5.2L - Rs 28.7L | Rs 18.6L - Rs 52.3L |
+| **Program Cost** | Rs 1.04 Lakhs | Rs 1.58 Lakhs |
+| **Average BCR** | **13.5:1** | **21.7:1** |
+| **BCR Range** | 5.0:1 - 27.6:1 | 11.8:1 - 33.1:1 |
 | **Key Driver** | Formal sector entry (30% vs 9.1%) | Formal placement (68% vs 9%) |
 | **All 32 scenarios positive?** | Yes | Yes |
 
@@ -77,6 +80,23 @@ This creates a **compounding divergence** over a career:
 > **What is "formal sector"?** Jobs with written contracts, social security (PF, ESI), and labor law protections. This includes organized manufacturing, IT services, banking, government jobs, and registered companies. Informal sector includes agriculture, street vendors, domestic workers, and most small businesses.
 >
 > **Why does formal grow and informal decline?** Formal sector workers benefit from annual increments, promotions, and skill accumulation in structured environments. Informal workers face wage stagnation, no job security, and often declining earnings as they age and physical capacity decreases.
+
+---
+
+## The Investment Multiplier: Three Legs of Value
+
+RWF's interventions create value at three stages, each multiplying the previous:
+
+| Stage | RTE | Apprenticeship |
+|-------|-----|----------------|
+| **Leg 1: RWF Direct Spend** | Rs 4,000/beneficiary | Rs 6,000/beneficiary |
+| **Leg 2: Unlocked Funds** | Rs 1,04,000 (government) | Rs 1,58,460 (govt + private) |
+| **Leg 3: Lifetime Economic Value** | ~Rs 14 Lakhs (avg LNPV) | ~Rs 34.4 Lakhs (avg LNPV) |
+| **Ratio** | **1 : 26 : 350** | **1 : 26 : 567** |
+
+Every rupee RWF spends unlocks Rs 26 in government/private funds, which in turn generates Rs 350-567 in lifetime economic value for the beneficiary.
+
+> **How to read this:** For RTE, Rs 4,000 of RWF expenditure catalyzes Rs 1.04 Lakhs of government education investment, which produces Rs 14 Lakhs in discounted lifetime earnings gains. For Apprenticeship, Rs 6,000 catalyzes Rs 1.58 Lakhs, producing Rs 34.4 Lakhs in lifetime gains. These are conservative estimates—actual social returns (including taxes, health, intergenerational effects) would be higher.
 
 ---
 
@@ -182,6 +202,11 @@ Or equivalently:
 
 **Why Apprenticeship NPV is higher than RTE despite decay:** The 68% formal placement rate (vs. 9% counterfactual) creates a massive 59 percentage point advantage that dominates the calculation. Even though the skill premium fades, the permanent shift into formal sector employment continues generating benefits for the full 40-year career.
 
+> **Are Apprenticeship assumptions too aggressive?** No — the two parameters with most uncertainty are deliberately set conservatively:
+> - **Initial premium (Rs 78k/yr)** is only ~33% of the theoretical back-of-envelope value (Rs 239k/yr). The model intentionally uses the lower figure.
+> - **Half-life (12 years)** is below international benchmarks for comparable programs (Colombia, Germany: 15-20 years). No India-specific longitudinal data exists, so we err on the side of caution.
+> - **Placement rate (68%)** comes from RWF's own validated program data. External validation through a tracer study is recommended.
+
 ---
 
 ## Regional Analysis
@@ -282,34 +307,35 @@ We ran **1,000 simulations** drawing parameters from their uncertainty distribut
 
 ---
 
-## Break-Even Analysis
+## Actual Program Returns
 
-Since we don't have RWF's actual program costs, we calculated **maximum allowable costs** at different Benefit-Cost Ratio (BCR) thresholds:
+### Program Costs (Shipra/RWF Data)
 
-```
-Max_Cost = LNPV / Target_BCR
-```
+| Component | RTE | Apprenticeship |
+|-----------|-----|----------------|
+| **RWF direct spend** | Rs 4,000/beneficiary | Rs 6,000/beneficiary |
+| **Unlocked funds** | Rs 1,00,000 (government) | Rs 1,52,460 (govt + private) |
+| **Total program investment** | **Rs 1,04,000** | **Rs 1,58,460** |
 
-> **What is a BCR (Benefit-Cost Ratio)?** BCR = Benefits / Costs. A BCR of 3:1 means every Rs 1 spent generates Rs 3 in lifetime benefits. Development programs typically aim for BCR > 2:1 to be considered cost-effective. BCR > 5:1 is excellent.
->
-> **How to use this:** If your actual cost per beneficiary is **less than** the break-even threshold, you achieve at least that BCR. For example, if RTE costs Rs 3L/beneficiary and the BCR=3 threshold is Rs 4.7L, you're achieving better than 3:1 returns.
+> **What is a BCR (Benefit-Cost Ratio)?** BCR = Benefits / Costs. A BCR of 3:1 means every Rs 1 invested generates Rs 3 in lifetime benefits. Development programs typically aim for BCR > 2:1 to be considered cost-effective. BCR > 5:1 is excellent.
+
+### BCR by Scenario
+
+| Scenario | RTE LNPV | RTE BCR | App LNPV | App BCR |
+|----------|----------|---------|----------|---------|
+| South Male Urban (highest) | Rs 28.7L | **27.6:1** | Rs 52.3L | **33.1:1** |
+| West Male Urban | Rs 22.2L | 21.4:1 | Rs 50.4L | 31.9:1 |
+| North Male Urban | Rs 15.0L | 14.4:1 | Rs 45.5L | 28.8:1 |
+| East Female Rural (lowest) | Rs 5.2L | **5.0:1** | Rs 18.6L | **11.8:1** |
+| **Average (all 16 scenarios)** | **Rs 14.0L** | **13.5:1** | **Rs 34.4L** | **21.7:1** |
+
+Even in the most pessimistic scenario (East, Female, Rural), both interventions deliver strong returns: RTE at 5.0:1 and Apprenticeship at 11.8:1.
+
+### Break-Even Context
 
 ![Break-Even Analysis](https://raw.githubusercontent.com/maxiveloso/rwf-economic-model/main/data/results/figures/breakeven_bar_chart.png)
 
-### Break-Even Cost Thresholds (BCR = 3:1)
-
-| Scenario | Max Cost (BCR=3) | Interpretation |
-|----------|------------------|----------------|
-| RTE Urban South | Rs 9.6L/beneficiary | Can sustain high program costs |
-| RTE Rural East | Rs 1.9L/beneficiary | Cost-sensitive, needs efficiency |
-| Apprenticeship Urban | Rs 17.4L/beneficiary | Substantial cost tolerance |
-| Apprenticeship Rural | Rs 6.6L/beneficiary | Moderate cost tolerance |
-
-**How to use:** If your actual cost per beneficiary is **less than** these thresholds, you achieve a 3:1 benefit-cost ratio or better.
-
-**Summary:**
-- **RTE:** If cost < Rs 5.0L/beneficiary on average, BCR > 3
-- **Apprenticeship:** If cost < Rs 12.1L/beneficiary on average, BCR > 3
+With actual costs of Rs 1.04L (RTE) and Rs 1.58L (Apprenticeship), both interventions operate far below their break-even thresholds. The average break-even at BCR=3:1 is Rs 5.0L for RTE and Rs 12.1L for Apprenticeship—meaning actual costs are **5× below** RTE's break-even and **8× below** Apprenticeship's break-even.
 
 ---
 
@@ -334,9 +360,10 @@ Based on these uncaptured benefits, our BCR estimates represent a **conservative
 
 | Metric | RTE | Apprenticeship |
 |--------|-----|----------------|
-| **BCR (this analysis)** | 3:1 - 8:1 | 4:1 - 12:1 |
+| **BCR (this analysis)** | 5.0:1 - 27.6:1 | 11.8:1 - 33.1:1 |
+| **Average BCR** | **13.5:1** | **21.7:1** |
 | **SROI Adjustment Factor** | 1.25 - 1.40× | 1.30 - 1.45× |
-| **Implied SROI Range** | **4:1 - 11:1** | **5:1 - 17:1** |
+| **Implied Average SROI** | **~17:1 - 19:1** | **~28:1 - 31:1** |
 
 > **Why the higher adjustment for Apprenticeship?** Formal sector employment (68% placement) generates proportionally more fiscal benefits (taxes, social security contributions) than RTE's mixed formal/informal outcomes.
 
@@ -522,8 +549,9 @@ Model-generated wage trajectories match empirical patterns from PLFS data.
 
 | Factor | RTE | Apprenticeship |
 |--------|-----|----------------|
-| Average LNPV | Rs 14L | Rs 34L |
-| Upfront cost | Lower | Higher |
+| Average LNPV | Rs 14L | Rs 34.4L |
+| Program cost | Rs 1.04L | Rs 1.58L |
+| Average BCR | 13.5:1 | 21.7:1 |
 | Operational complexity | Lower | Higher |
 | Time to impact | Longer (education pathway) | Shorter (direct employment) |
 | Scalability | Higher | Lower |
@@ -547,21 +575,18 @@ Model-generated wage trajectories match empirical patterns from PLFS data.
 
 ---
 
-### Q6: "What if our actual costs are higher than your break-even thresholds?"
+### Q6: "How do actual program costs compare to break-even thresholds?"
 
-**A:** The break-even analysis provides decision rules for different scenarios:
+**A:** With actual costs of Rs 1.04L (RTE) and Rs 1.58L (Apprenticeship), both interventions operate far below their break-even thresholds:
 
-| Scenario | Break-Even at BCR=3:1 | Interpretation |
-|----------|----------------------|----------------|
-| RTE Urban South | Rs 9.6L/beneficiary | Can sustain high program costs |
-| RTE Rural East | Rs 1.9L/beneficiary | Cost-sensitive, needs efficiency |
-| Apprenticeship Urban | Rs 12-17L/beneficiary | Substantial cost tolerance |
-| Apprenticeship Rural | Rs 6-8L/beneficiary | Moderate cost tolerance |
+| Scenario | Break-Even at BCR=3:1 | Actual Cost | Actual BCR |
+|----------|----------------------|-------------|------------|
+| RTE Average | Rs 5.0L | Rs 1.04L | **13.5:1** |
+| RTE Rural East (lowest) | Rs 1.9L | Rs 1.04L | **5.0:1** |
+| Apprenticeship Average | Rs 12.1L | Rs 1.58L | **21.7:1** |
+| Apprenticeship Rural East (lowest) | Rs 6.6L | Rs 1.58L | **11.8:1** |
 
-**If your costs exceed these thresholds, three options:**
-1. **Focus:** Prioritize regions/demographics where you're clearly above threshold
-2. **Reduce costs:** Identify operational efficiencies
-3. **Accept lower BCR:** Some regions may still be worth serving at BCR=2:1 for equity or strategic reasons
+Even in the worst-case scenario (East Female Rural), both interventions achieve BCR well above the 3:1 threshold typically used for development programs.
 
 ---
 
@@ -657,11 +682,11 @@ Model-generated wage trajectories match empirical patterns from PLFS data.
 | Intervention Type | Typical BCR Range | Our Estimates |
 |-------------------|-------------------|---------------|
 | Primary education (World Bank) | 10:1 - 15:1 | N/A |
-| Secondary education | 5:1 - 10:1 | RTE: 3:1 - 8:1 (depending on costs) |
-| Vocational training (ILO) | 2:1 - 6:1 | Apprenticeship: 4:1 - 12:1 |
-| Job training programs (J-PAL) | 1:1 - 4:1 | Within range |
+| Secondary education | 5:1 - 10:1 | RTE: **5:1 - 28:1** (avg 13.5:1) |
+| Vocational training (ILO) | 2:1 - 6:1 | Apprenticeship: **12:1 - 33:1** (avg 21.7:1) |
+| Job training programs (J-PAL) | 1:1 - 4:1 | Both interventions exceed this range |
 
-Our Apprenticeship estimates are on the higher end, which is plausible given RWF's 68% placement rate (well above national average). RTE estimates are conservative, reflecting our honest uncertainty about the causal pathway.
+Our estimates are higher than typical benchmarks. This reflects RWF's high placement rates (68% for Apprenticeship, 30% for RTE) and the low program costs (Rs 1.04-1.58L per beneficiary). Even with conservative assumptions and a 40% causal haircut, BCRs remain strong.
 
 ---
 
