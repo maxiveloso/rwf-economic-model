@@ -105,7 +105,7 @@ ln(W) = B0 + B1*S + B2*Exp + B3*Exp^2
 | Formal | +1.5%/year | PLFS 2020-24 trends |
 | Informal | -0.2%/year | PLFS 2020-24 stagnation |
 
-This differential creates compounding returns: today's 2.25x formal/informal gap becomes 3-4x by retirement.
+This differential creates compounding returns: today's 2.44x formal/informal gap becomes 3-4x by retirement.
 
 ### 3.4 Parameter Specification
 
@@ -122,7 +122,6 @@ This differential creates compounding returns: today's 2.25x formal/informal gap
 | RTE Test Score Gain | D_RTE | 0.137 SD | (0.10, 0.20) | ITT estimate |
 | Apprentice Initial Premium | pi_0 | Rs 78,000 | (69K, 85K) | Calculated |
 | Apprentice Decay Half-Life | h | 12 years | (5, 30) | Assumed |
-| Formal Wage Multiplier | - | 2.25x | - | Sharma & Sasikumar (2018) |
 | Career Horizon | T | 40 years | - | Standard |
 
 ### 3.5 Regional & Demographic Adjustments
@@ -304,7 +303,7 @@ Break-even analysis identifies maximum allowable program costs at different BCR 
 |-----------|-------|---------------|-------------|
 | Secondary education BCR (World Bank) | 5:1 - 10:1 | RTE: 3:1 - 8:1 | Yes |
 | Vocational training BCR (ILO) | 2:1 - 6:1 | App: 4:1 - 12:1 | Higher, plausible given 68% placement |
-| Formal/informal wage gap (India) | 2-3x | 2.25x baseline | Yes |
+| Formal/informal wage gap (India) | 2-3x | 2.44x baseline | Yes |
 
 ---
 
@@ -446,7 +445,6 @@ All code is reproducible and documented. Contact RWF Analytics for access.
 | SOCIAL_DISCOUNT_RATE | 5.0% | (3%, 8%) | Murty & Panda (2020) |
 | REAL_WAGE_GROWTH_FORMAL | 1.5% | (0.5%, 2.5%) | PLFS 2020-24 |
 | REAL_WAGE_GROWTH_INFORMAL | -0.2% | (-1%, 0.5%) | PLFS 2020-24 |
-| FORMAL_WAGE_MULTIPLIER | 2.25 | (2.0, 2.5) | Sharma & Sasikumar (2018) |
 | TEST_SCORE_TO_YEARS | 6.8 | (5, 8) | Angrist & Evans (2020) |
 
 ### Tier 3 (Standard) Parameters
