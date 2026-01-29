@@ -26,8 +26,8 @@ STEP 1: Test Score → Equivalent Years (UPDATED: Using ITT)
 │ RTE_TEST_SCORE_GAIN │  ×  │ TEST_SCORE_TO_YEARS │  =  │   Equivalent Years  │
 │   0.137 SD (ITT)    │     │    6.8 years/SD     │     │    0.93 years       │
 └─────────────────────┘     └─────────────────────┘     └─────────────────────┘
-NOTE: Changed from ToT (0.23) to ITT (0.137) per Anand guidance Dec 2025
-      "We should think of per child allocated, not per completer"
+NOTE: Changed from ToT (0.23) to ITT (0.137) as
+we should think of per child allocated, not per completer.
 
 STEP 2: Equivalent Years → Effective Schooling (UPDATED)
 ┌─────────────────────┐     ┌─────────────────────┐     ┌─────────────────────┐
@@ -46,7 +46,7 @@ STEP 3: Effective Schooling → Education Premium (Mincer Equation) (UPDATED)
 
 STEP 4: Benefits Adjustment - ELIMINATED (Jan 20, 2026)
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│  ELIMINATED per Anand guidance: "You have over-specified the model"         │
+│  ELIMINATED per RWF guidance to avoid over-specifiying the model.           │
 │                                                                             │
 │  OLD: benefits_adjustment = 2.25 / 1.86 = 1.21×                             │
 │  NEW: No additional adjustment - PLFS wages are Single Source of Truth      │
@@ -57,7 +57,7 @@ STEP 4: Benefits Adjustment - ELIMINATED (Jan 20, 2026)
 │  - Ratio: 2.44× (already exceeds ILO 2.25× target!)                         │
 └─────────────────────────────────────────────────────────────────────────────┘
 
-STEP 5: 4-Pathway Model (UPDATED Jan 2026 - Anand guidance)
+STEP 5: 4-Pathway Model
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │ CONTROL GROUP (9.1% formal, NO Mincer premium):                             │
 │ ┌───────────────────────────────────────────────────────────────────────┐   │
@@ -127,7 +127,7 @@ STEP 8: Decomposition of Treatment Effect
 │  - Contribution: E[wage_base] × 0.055 ≈ ₹800-1,200/month                    │
 │                                                                             │
 │  PRIMARY DRIVER: Placement effect > Quality effect                          │
-│  This validates Anand's intuition that P_FORMAL_RTE is critical             │
+│  This validates the intuition that P_FORMAL_RTE is critical                 │
 └─────────────────────────────────────────────────────────────────────────────┘
 
 STEP 9: NPV Calculation (40-year horizon) - UPDATED Jan 2026
