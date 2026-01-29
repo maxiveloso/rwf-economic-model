@@ -143,7 +143,7 @@ No—we explicitly model informal sector outcomes. Key insight:
 
 - Informal sector wages show **-0.2% real growth** annually
 - Formal sector wages show **+1.5% real growth** annually
-- Today's 2.25x formal/informal wage gap becomes **3-4x by retirement**
+- Today's 2.44x formal/informal wage gap becomes **3-4x by retirement**
 
 **This means:** Interventions that improve formal sector entry rates have **compounding returns** over a 40-year career. The gap widens, not narrows.
 
