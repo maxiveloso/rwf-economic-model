@@ -214,7 +214,7 @@ Our Apprenticeship estimates are on the higher end, which is plausible given RWF
 | Max Cost at BCR=3:1 (mean) | Rs 4.7L | Rs 11.5L |
 | Decomposition | 80% Placement / 20% Mincer | N/A |
 | Key Driver | P_FORMAL_RTE | P_FORMAL_APPRENTICE, h |
-| Validation Status | 6/8 checks passed | 6/8 checks passed |
+| Validation Status | 8/8 checks passed | 8/8 checks passed |
 
 ---
 
