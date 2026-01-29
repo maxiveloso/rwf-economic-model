@@ -207,8 +207,8 @@ YEARS 1-40: Working Life with Premium
 │  │                                                                     │   │
 │  │ With halflife = 12 years:                                           │   │
 │  │   Year 1:  premium = 48.0% (or 18.5% on formal)                     │   │
-│  │   Year 12: premium = 24.0% (half of initial)                        │   │
-│  │   Year 24: premium = 12.0% (quarter of initial)                     │   │
+│  │   Year 12: premium = 24.0% of base wage (50% decay from initial 48%)│   │
+│  │   Year 24: premium = 12.0% of base wage (75% decay from initial)    │   │
 │  │   Year 36: premium = 6.0%                                           │   │
 │  │   Year 40: premium = 4.8%                                           │   │
 │  └─────────────────────────────────────────────────────────────────────┘   │
