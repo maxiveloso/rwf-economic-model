@@ -113,10 +113,10 @@ This differential creates compounding returns: today's 2.25x formal/informal gap
 |-----------|--------|-------|-------|--------|
 | Mincer Return (HS) | B | 5.8% | (5%, 9%) | Mitra (2019) |
 | Social Discount Rate | d | 5.0% | (3%, 8%) | Murty & Panda (2020) |
-| P_FORMAL_RTE | P(F|RTE) | 30% | (20%, 50%) | RWF guidance |
-| P_FORMAL_HIGHER_SECONDARY | P(F|HS) | 9.1% | (5%, 15%) | ILO 2024 |
-| P_FORMAL_APPRENTICE | P(F|App) | 68% | (50%, 90%) | RWF placement data |
-| P_FORMAL_NO_TRAINING | P(F|None) | 9% | (5%, 15%) | PLFS derived |
+| P_FORMAL_RTE | P(F\RTE) | 30% | (20%, 50%) | RWF guidance |
+| P_FORMAL_HIGHER_SECONDARY | P(F\HS) | 9.1% | (5%, 15%) | ILO 2024 |
+| P_FORMAL_APPRENTICE | P(F\App) | 68% | (50%, 90%) | RWF placement data |
+| P_FORMAL_NO_TRAINING | P(F\None) | 9% | (5%, 15%) | PLFS derived |
 | Real Wage Growth (Formal) | g_formal | 1.5% | (0.5%, 2.5%) | PLFS 2020-24 |
 | Real Wage Growth (Informal) | g_informal | -0.2% | (-1%, 0.5%) | PLFS 2020-24 |
 | RTE Test Score Gain | D_RTE | 0.137 SD | (0.10, 0.20) | ITT estimate |
