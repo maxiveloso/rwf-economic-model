@@ -17,7 +17,7 @@ Generated: 2026-01-23 11:23
 | SOCIAL_DISCOUNT_RATE | 0.05 | 2 | Murty & Panda (2020) - Ramsey formula p + vg = 8.5... | Direct empirical |
 | RTE_TEST_SCORE_GAIN | 0.137 | 1 | Muralidharan & Sundararaman (2013) NBER RCT w19441... | Direct empirical |
 | TEST_SCORE_TO_YEARS | 6.8 | 2 | Angrist & Evans (2020) micro-LAYS rescaling method... | Direct empirical |
-| APPRENTICE_INITIAL_PREMIUM | 78000 | 1 | Calculated: [(W_formal × P(F|App)) + (W_informal ×... | Direct empirical |
+| APPRENTICE_INITIAL_PREMIUM | 78000 | 1 | Calculated: [(W_formal × P(F\App)) + (W_informal ×... | Direct empirical |
 | APPRENTICE_DECAY_HALFLIFE | 12 | 1 | Assumed - no India-specific data available... | Model assumption |
 | APPRENTICE_COMPLETION_RATE | 0.85 | 1 | MSDE funnel analysis; independent of placement rat... | Direct empirical |
 | RTE_RETENTION_FUNNEL | 0.6 | 1 | UDISE+ EWS completion rates as proxy (no RTE-speci... | Direct empirical |
