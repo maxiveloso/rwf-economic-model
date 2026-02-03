@@ -3,7 +3,7 @@
 **Lifetime Economic Benefits Estimation for RightWalk Foundation Interventions**
 
 [![Validation Status](https://img.shields.io/badge/validation-8%2F8%20passed-brightgreen)]()
-[![Model Version](https://img.shields.io/badge/version-4.3-blue)]()
+[![Model Version](https://img.shields.io/badge/version-4.4-blue)]()
 [![License](https://img.shields.io/badge/license-MIT-green)]()
 
 ---
@@ -29,6 +29,33 @@ The model produces order-of-magnitude benefit estimates across **32 demographic-
 ### Summary Finding
 
 > Both interventions generate positive lifetime returns across all 32 scenarios analyzed. Apprenticeship yields 4× higher per-beneficiary returns but requires greater operational complexity. RTE is more scalable with lower per-beneficiary costs. **The key driver for both interventions is improved formal sector employment.**
+
+### Dual BCR Analysis (Feb 2026)
+
+Two perspectives on Return on Investment:
+
+| Metric | RTE | Apprenticeship |
+|--------|-----|----------------|
+| **Average LNPV** | Rs 14.9 Lakhs | Rs 36.4 Lakhs |
+| **Full BCR** (Total Investment) | 14.3× (range 5.4-29.0) | 23.0× (range 12.5-35.0) |
+| **RWF-only BCR** (Direct Spend) | 372× (range 141-755) | 606× (range 329-924) |
+| **RWF Direct Cost** | Rs 4,000 | Rs 6,000 |
+| **Total Investment** | Rs 1.04 Lakhs | Rs 1.58 Lakhs |
+| **Unlock Multiplier** | 26× | 39.6× |
+
+> **Full BCR**: Total benefits / total costs (RWF + government + private co-finance)
+> **RWF-only BCR**: Total benefits / RWF direct spend only (funder ROI perspective)
+> **Unlock Multiplier**: Total investment unlocked per rupee of RWF direct spend
+
+### BCR Sensitivity to Discount Rate
+
+| Discount Rate | RTE BCR (Full) | Apprenticeship BCR (Full) |
+|---------------|----------------|---------------------------|
+| 3% (low) | 31.5× | 47.2× |
+| 5% (central) | 22.6× | 33.7× |
+| 8% (high) | 15.1× | 22.2× |
+
+> Even at 8% discount rate (conservative), both interventions exceed the 3:1 cost-effectiveness threshold.
 
 ### Decision Rules
 
@@ -275,4 +302,4 @@ For questions about this analysis, contact:
 
 ---
 
-**Model Version:** 4.3 | **Validation:** 8/8 checks passed | **Last Updated:** January 2026
+**Model Version:** 4.4 | **Validation:** 8/8 checks passed | **Last Updated:** February 2026
