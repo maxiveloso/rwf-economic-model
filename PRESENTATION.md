@@ -1,7 +1,7 @@
 # RWF Economic Impact Model
-## Proof-of-Concept Results for Founders
+## Results for Founders
 
-**January 2026**
+**Updated February 2026**
 
 ---
 
@@ -235,6 +235,41 @@ Urban beneficiaries consistently show **30-50% higher LNPV** than rural benefici
 
 ## Sensitivity Analysis
 
+### Top 5 Critical Assumptions (by NPV Elasticity)
+
+**What is elasticity?** Elasticity (E) measures sensitivity: a 1% change in the parameter causes an E% change in NPV.
+- |E| > 1: NPV is highly sensitive (more than proportional response)
+- |E| ≈ 1: NPV responds proportionally
+- |E| < 1: NPV is less sensitive (dampened response)
+- Negative E: Inverse relationship (e.g., higher discount rate → lower NPV)
+
+#### RTE Intervention
+
+| Rank | Assumption | Central | Range | Elasticity | Tier |
+|------|------------|---------|-------|------------|------|
+| 1 | Social discount rate | 5% | 3%-8% | **-1.11** | 2 |
+| 2 | Formal sector entry rate | 30% | 20%-50% | **0.96** | 1 |
+| 3 | Mincer return to education | 7%/yr | 5%-9% | **0.33** | 2 |
+| 4 | Formal wage growth | 1.5%/yr | 0.5%-2.5% | **0.20** | 2 |
+| 5 | Test score gain | 0.137 SD | 0.10-0.20 | **0.16** | 1 |
+
+#### Apprenticeship Intervention
+
+| Rank | Assumption | Central | Range | Elasticity | Tier |
+|------|------------|---------|-------|------------|------|
+| 1 | Social discount rate | 5% | 3%-8% | **-1.16** | 2 |
+| 2 | Formal placement rate | 72% | 50%-90% | **1.02** | 1 |
+| 3 | Formal wage growth | 1.5%/yr | 0.5%-2.5% | **0.22** | 2 |
+| 4 | Initial premium | ₹84k | ₹50k-₹120k | **0.22** | 1 |
+| 5 | Premium half-life | 10 yrs | 5-50 yrs | **0.05** | 1 |
+
+**Key Insights:**
+1. **Discount rate has highest elasticity** (|E| > 1) for both interventions—but this is a normative policy choice, not an empirical parameter
+2. **P_FORMAL is near-unit elastic** (E ≈ 1)—formal sector access is the key empirical driver
+3. **Tier 1 parameters** have highest uncertainty and merit priority data collection (tracer study)
+
+---
+
 ### What Parameters Matter Most?
 
 We tested how LNPV changes when each parameter varies across its uncertainty range.
@@ -416,6 +451,87 @@ Model-generated wage trajectories match empirical patterns from PLFS data.
 
 ---
 
+## Post-Delivery Deep Dives
+
+Following the initial Proof-of-Concept, we conducted a systematic evidence audit and analysis across 10 workstreams. Full documents are in the `after_delivery/` directory; summaries below.
+
+### Gender Funnel Analysis
+
+**Full document:** `after_delivery/06_gender_funnel/gender_data_assessment.md`
+
+The model currently applies the same formal placement rates to all genders. This is a known limitation — India's female LFPR is 37% (vs 78% male, PLFS 2023-24), and gender wage gaps range from 22% (urban formal) to 33% (rural informal).
+
+Key findings from the literature review:
+- Women's returns to each additional year of education are consistently *higher* than men's (38% vs 28.6% at secondary level — Chen et al. 2022)
+- But female LFPR is so low that many women never reach the labor market stage where returns are realized
+- If female P(Formal|Apprentice) is 55% instead of 68%, the model overstates female NPV by ~24%
+
+**Immediate action (near-zero cost):** Re-query RWF's 68% placement data with a gender filter. This single data point would immediately improve the model.
+
+**14 priority tracking fields** have been defined for both program funnels, from enrollment through 12-month retention.
+
+### Trade Half-Life Taxonomy
+
+**Full document:** `after_delivery/07_halflife_by_trade/trade_halflife_summary.md`
+
+The model uses a single half-life (h=10 years) for all apprenticeship trades. We developed a 4-category taxonomy based on international evidence:
+
+| Category | Examples | Half-Life | NPV vs Baseline |
+|----------|----------|-----------|-----------------|
+| A: Rapid Obsolescence | IT/ITES, Digital Marketing | 5-8 yrs | 57-84% |
+| B: Moderate Decay | Auto Mechanic, CNC, COPA | 8-12 yrs | 92-114% |
+| C: Durable Skills | Electrician, Plumber, Welder | 12-18 yrs | 114-145% |
+| D: Long-Term Persistent | Health Assistant, Draughtsman | 18-25 yrs | 145-170% |
+
+The national NATS trade mix is dominated by Category C (43% of enrollment), giving a weighted average h of ~11.4 years — suggesting the model baseline is slightly conservative. Steering youth toward durable trades could increase NPV by ~31%.
+
+### Policy Persistence Scenarios (Illustrative)
+
+**Full document:** `after_delivery/08_policy_persistence/policy_persistence_scenarios.md`
+
+If the policies RWF helped establish continue operating after RWF exits, each subsequent year produces a new cohort of beneficiaries. We modeled three illustrative scenarios:
+
+| Scenario | Years Post-Exit | Attribution | Multiplier | Effective BCR (RTE) |
+|----------|----------------|-------------|------------|---------------------|
+| Conservative | 5 | 20% | 1.86x | 10.2x |
+| Moderate | 10 | 40% | 4.40x | 62.9x |
+| Optimistic | 15 | 60% | 9.31x | 395.0x |
+
+**Critical caveat:** Attribution fractions are illustrative with no empirical basis. The single-cohort BCR is the defensible figure; persistence multipliers show the *structure* of how value compounds, not the *magnitude*.
+
+### Evidence Quality Assessment
+
+**Full document:** `after_delivery/09_sample_sizes_evidence_table/parameter_evidence_table.md`
+
+We audited all 12 high-impact parameters for source quality, sample size, and confidence:
+- **1 parameter rated HIGH** confidence (P_FORMAL_APPRENTICE — from RWF's own data)
+- **7 rated MODERATE** (sourced from PLFS, peer-reviewed literature)
+- **1 rated LOW-MODERATE**, **3 rated LOW** (assumed or proxy-based)
+
+The 3 LOW-confidence parameters (P_FORMAL_RTE, decay half-life, RTE retention) collectively drive the majority of RTE NPV variance and are all targetable by the tracer study.
+
+### Tracer Study Design
+
+**Full document:** `after_delivery/tracer_study/deliverables/tracer_onepager_v2.md`
+
+A comprehensive tracer study proposal has been developed:
+- **Sample:** 1,200-1,600 (300-400 per program arm + comparison group)
+- **Cohorts:** 2015-2024 (expanded vintage for cross-cohort decay estimation)
+- **Budget:** Rs 45-55 lakhs over 18 months
+- **Expected impact:** Reduce parameter uncertainty from ±50% to ±15-20% for top 4 parameters
+
+This is the single most cost-effective investment for strengthening the evidence base. One study closes 7 of 8 identified evidence gaps simultaneously.
+
+### Additional Deliverables
+
+- **Assumptions & Methodology Appendix** (`after_delivery/03_assumptions_appendix/`) — Full parameter table with 24 parameters, 3 scenario configurations, formulas, and limitations
+- **Private Schooling Validation Plan** (`after_delivery/04_private_schooling_validation/`) — Risk analysis showing 56% NPV drop if P_FORMAL_RTE is 15% instead of 30%
+- **Donor One-Pagers** (`after_delivery/10_donor_materials/`) — Conservative and extended versions ready for funder use
+- **Microdata Access Checklist** (`after_delivery/11_microdata_access/`) — 11 datasets inventoried with access steps and compliance notes
+- **Evidence Gaps & Budget Note** (`after_delivery/13_evidence_gaps/`) — 8 gaps mapped to cost/timeline; Rs 45-55L tracer closes 7 of 8
+
+---
+
 ## Limitations & Caveats
 
 ### What This Analysis Cannot Tell You
@@ -454,22 +570,24 @@ Model-generated wage trajectories match empirical patterns from PLFS data.
 
 ### For Reducing Uncertainty
 
-**Priority 1: Longitudinal Tracer Study**
-- Track 200-300 beneficiaries for 1-2 years
-- Validate P_FORMAL assumptions
-- Measure actual wage trajectories
-- Estimate treatment persistence (h)
-- **Impact:** Reduce uncertainty by 50%+, convert PoC to causal evaluation
-- **Estimated cost:** Rs 5-8 Lakhs
+**Priority 1: Longitudinal Tracer Study** (see `after_delivery/tracer_study/deliverables/tracer_onepager_v2.md`)
+- Sample 1,200-1,600 beneficiaries across 2015-2024 cohorts
+- Validate P_FORMAL_RTE (currently 30%, zero empirical data)
+- Externally validate P_FORMAL_APPRENTICE (currently 68%)
+- Estimate trade-specific decay half-lives via cross-cohort design
+- Generate gender-disaggregated outcomes
+- **Impact:** Reduce uncertainty from ±50% to ±15-20% for top 4 parameters
+- **Budget:** Rs 45-55 Lakhs over 18 months
 
-**Priority 2: Propensity Score Matching**
-- With beneficiary microdata, construct rigorous control groups
-- Control for selection bias
-- Enable subgroup analysis
+**Priority 2: Immediate Quick Wins** (see `after_delivery/06_gender_funnel/gender_data_assessment.md`)
+- Re-query RWF's 68% placement rate by gender (1-2 weeks, near-zero cost)
+- Add gender tabulation to enrollment reports (zero cost)
+- Pilot lightweight exit survey for 2-3 completing cohorts (Rs 1-2 lakhs)
 
-**Priority 3: State-Level Disaggregation**
-- With state-specific data, produce state-level LNPV estimates
-- Enable district-level targeting recommendations
+**Priority 3: Microdata Access** (see `after_delivery/11_microdata_access/microdata_access_checklist.md`)
+- Request PLFS unit-level records for enhanced calibration
+- Confirm RWF beneficiary contact database for tracer sampling frame
+- Secure data sharing agreements per DPDPA compliance
 
 ---
 
@@ -696,4 +814,4 @@ Our estimates are higher than typical benchmarks. This reflects RWF's high place
 
 ---
 
-*Generated: January 2026 | RWF Economic Impact Model v4.3*
+*Updated: February 2026 | RWF Economic Impact Model v4.4*

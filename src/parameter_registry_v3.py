@@ -733,7 +733,7 @@ RTE_TEST_SCORE_GAIN = Parameter(
 
     MODEL CHAIN (with ITT):
     0.137 SD × 6.8 years/SD = 0.93 equivalent years
-    → exp(0.07 × 0.93) = 6.7% wage premium (vs 11.5% with ToT)
+    → exp(0.058 × 0.93) = 5.5% wage premium (vs 9.4% with ToT)
 
     Why ITT is more appropriate:
     - Measures effect "per child allocated" not "per completer"
@@ -1158,11 +1158,15 @@ TEST_SCORE_TO_YEARS = Parameter(
     The 6.8 value comes from micro-LAYS (Learning-Adjusted Years of Schooling)
     methodology which provides more current conversion factor.
 
-    MODEL CHAIN for RTE:
-    - Test score gain: 0.23 SD (from NBER RCT)
-    - Equivalent years: 0.23 × 6.8 = 1.56 years (vs old 1.08)
+    MODEL CHAIN for RTE (current - ITT):
+    - Test score gain: 0.137 SD (ITT, per Anand guidance Jan 2026)
+    - Equivalent years: 0.137 × 6.8 = 0.93 years
+    - Combined with Mincer 5.8%: exp(0.058 × 0.93) = 5.5% wage premium
+
+    Alternative (ToT, for reference only):
+    - Test score gain: 0.23 SD (ToT - effect on completers only)
+    - Equivalent years: 0.23 × 6.8 = 1.56 years
     - Combined with Mincer 5.8%: exp(0.058 × 1.56) = 9.4% wage premium
-    - Old calculation: exp(0.058 × 1.08) = 6.5% wage premium
 
     India-specific estimate: NOT AVAILABLE
 

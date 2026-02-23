@@ -395,7 +395,7 @@ def main():
     add_title_slide(
         prs,
         "RWF Economic Impact Model",
-        "Lifetime Economic Benefits Analysis  •  Proof-of-Concept for Founders  •  January 2026"
+        "Lifetime Economic Benefits Analysis  •  Updated February 2026"
     )
 
     # ===========================================
@@ -608,7 +608,143 @@ def main():
     )
 
     # ===========================================
-    # SLIDE 15: Decision Framework
+    # SLIDE 15: Gender Funnel Analysis
+    # ===========================================
+    add_two_column_slide(
+        prs,
+        "Gender Funnel: Current Data & Key Gaps",
+        "Apprenticeship Funnel",
+        [
+            "Mobilized > Registered > Enrolled > Completed > Certified > Placed > Formal > Retained",
+            "P(Formal|Apprentice) = 68% (blended)",
+            "Gender breakdown: NOT YET AVAILABLE",
+            "Female share est. ~30-40% of enrollees",
+            "If female P(Formal) is 55% vs 68%, model overstates female NPV by ~24%",
+        ],
+        "RTE Funnel",
+        [
+            "Mobilized > Enrolled > Completed Gr 8 > Completed Gr 12 > Labor Market > Formal",
+            "P(Formal|RTE) = 30% (expert assumption)",
+            "Gender breakdown: NOT YET AVAILABLE",
+            "Female LFPR = 37% vs 78% male (PLFS)",
+            "Gender wage gap: 24% formal, 32% informal (urban)",
+        ],
+        nudge="Immediate action: re-query RWF's 68% placement data by gender. This single data point would improve the model at near-zero cost."
+    )
+
+    # ===========================================
+    # SLIDE 16: Trade Mix & Half-Life
+    # ===========================================
+    add_table_slide(
+        prs,
+        "Trade Mix & Skill Half-Life: NPV by Trade Category",
+        ["Category", "Example Trades", "Half-Life", "NPV vs Baseline"],
+        [
+            ["A: Rapid Obsolescence", "IT/ITES, Digital Marketing", "5-8 yrs", "57-84%"],
+            ["B: Moderate Decay", "Auto Mechanic, CNC, COPA", "8-12 yrs", "92-114%"],
+            ["C: Durable Skills", "Electrician, Plumber, Welder", "12-18 yrs", "114-145%"],
+            ["D: Long-Term Persistent", "Health Asst, Draughtsman", "18-25 yrs", "145-170%"],
+        ],
+        nudge="National NATS trade mix is dominated by Category C (43% share), suggesting the model baseline (h=10) may be slightly conservative. Weighted avg h ~ 11.4 years."
+    )
+
+    # ===========================================
+    # SLIDE 17: Trade Mix Scenarios
+    # ===========================================
+    add_table_slide(
+        prs,
+        "Trade Mix Scenarios: BCR Impact",
+        ["Scenario", "Weighted h", "NPV (approx.)", "Full BCR", "vs Baseline"],
+        [
+            ["IT-Heavy (pessimistic)", "9.2 yrs", "Rs 7.5L", "4.7:1", "-6%"],
+            ["Balanced National", "11.4 yrs", "Rs 8.8L", "5.6:1", "+10%"],
+            ["Manufacturing-Heavy", "15.1 yrs", "Rs 10.5L", "6.7:1", "+32%"],
+            ["Model baseline", "10 yrs", "Rs 8.0L", "5.1:1", "--"],
+        ],
+        nudge="Steering youth toward durable trades (electrician, plumber, welder) could increase apprenticeship NPV by ~31%."
+    )
+
+    # ===========================================
+    # SLIDE 18: Top 5 Evidence Sources
+    # ===========================================
+    add_table_slide(
+        prs,
+        "Top 5 Evidence Sources",
+        ["#", "Source", "Used For", "Sample", "Confidence"],
+        [
+            ["1", "PLFS 2023-24", "Baseline wages, employment", "~433K individuals", "HIGH"],
+            ["2", "ILO India Employment 2024", "Formal entry rates, youth", "PLFS microdata", "HIGH"],
+            ["3", "Chen et al. (2022)", "Mincer returns (5.8%/yr)", "~100K households", "MODERATE"],
+            ["4", "Muralidharan (2013)", "RTE test score gain (0.137 SD)", "18,926 obs (RCT)", "MODERATE"],
+            ["5", "RWF Data (Nov 2025)", "Placement rate (68%)", "RWF participants", "HIGH"],
+        ],
+        nudge="Of 12 high-impact parameters, only 1 has HIGH confidence (P_FORMAL_APPRENTICE). The tracer study targets the 3 LOW-confidence parameters."
+    )
+
+    # ===========================================
+    # SLIDE 19: Tracer Study Plan
+    # ===========================================
+    add_content_slide(
+        prs,
+        "Tracer Study: Closing the Evidence Gaps",
+        [
+            "Sample: 1,200-1,600 (300-400 RTE + 300-400 Apprentice + comparison group)",
+            "Cohorts: 2015-2024 (expanded vintage for cross-cohort decay estimation)",
+            "",
+            "Priority research questions:",
+            "  1. P_FORMAL_RTE validation (currently 30%, zero empirical data)",
+            "  2. External validation of P_FORMAL_APPRENTICE (currently 68%)",
+            "  3. Trade-specific decay estimation (IT vs electrician vs health)",
+            "  4. Gender-disaggregated outcomes (placement, wages, retention)",
+            "",
+            "Timeline: 18 months core  |  Budget: Rs 45-55 lakhs",
+            "Expected: reduce parameter uncertainty from +/-50% to +/-15-20%"
+        ],
+        nudge="One investment (Rs 45-55L) closes 7 of 8 evidence gaps simultaneously. This is the single most cost-effective next step."
+    )
+
+    # ===========================================
+    # SLIDE 20: Policy Persistence (Illustrative)
+    # ===========================================
+    add_table_slide(
+        prs,
+        "Policy Persistence: Multi-Cohort Impact (Illustrative)",
+        ["Scenario", "Years Post-Exit", "Attribution", "Multiplier", "Effective BCR (RTE)"],
+        [
+            ["Conservative", "5 yrs", "20%", "1.86x", "10.2x"],
+            ["Moderate", "10 yrs", "40%", "4.40x", "62.9x"],
+            ["Optimistic", "15 yrs", "60%", "9.31x", "395.0x"],
+        ],
+        nudge="ILLUSTRATIVE ONLY: Attribution fractions have no empirical basis. Shows how persistence compounds value — single-cohort BCR is a conservative floor."
+    )
+
+    # ===========================================
+    # SLIDE 21: Ask & Next Steps
+    # ===========================================
+    add_content_slide(
+        prs,
+        "Ask & Next Steps",
+        [
+            "1. Approve tracer study launch (Rs 45-55L, 18 months)",
+            "   -> Validates the 3 LOW-confidence parameters that drive BCR",
+            "",
+            "2. Request actual cost data (RWF direct spend per beneficiary)",
+            "   -> Enables precise RWF-only BCR calculation",
+            "",
+            "3. Re-query 68% placement rate by gender (1-2 weeks, near-zero cost)",
+            "   -> Immediate model improvement",
+            "",
+            "4. Microdata access: PLFS unit records + RWF beneficiary contact database",
+            "   -> Needed for tracer sampling frame and enhanced calibration",
+            "",
+            "5. Pilot lightweight exit survey for next 2-3 completing cohorts",
+            "   -> Generates gender-disaggregated data before tracer results arrive"
+        ],
+        nudge=None
+    )
+
+    # ===========================================
+    # SLIDE 22: Decision Framework
     # ===========================================
     add_table_slide(
         prs,
@@ -625,33 +761,36 @@ def main():
     )
 
     # ===========================================
-    # SLIDE 16: Recommendations & Next Steps
+    # APPENDIX: Key Assumptions & Uncertainty
     # ===========================================
-    add_content_slide(
+    add_section_slide(prs, "Appendix")
+
+    add_table_slide(
         prs,
-        "Strategic Recommendations & Next Steps",
+        "Key Assumptions & Confidence Levels",
+        ["Parameter", "Value", "Range", "Confidence", "Tracer?"],
         [
-            "1. Both interventions justify continued investment — positive returns in all 32 scenarios",
-            "",
-            "2. Geographic targeting matters — South/West urban returns are 50%+ higher than North/East rural",
-            "",
-            "3. Formal sector pathway is key — consider adding career guidance and placement support to RTE",
-            "",
-            "4. For Apprenticeship, focus on durable skills (electrical, plumbing, welding) over rapidly-changing tech",
-            "",
-            "5. Priority: Longitudinal Tracer Study (200-300 beneficiaries, 1-2 years, Rs 5-8L cost)",
-            "   → Would reduce uncertainty by 50%+ and validate P(Formal) assumptions"
+            ["P(Formal|RTE)", "30%", "20-50%", "LOW", "Yes"],
+            ["P(Formal|Apprentice)", "68%", "50-90%", "HIGH", "Yes"],
+            ["Decay Half-Life", "10 yrs", "5-50 yrs", "LOW", "Partial"],
+            ["RTE Retention", "60%", "50-75%", "LOW", "Yes"],
+            ["Completion Rate", "85%", "75-95%", "LOW", "Yes"],
+            ["Mincer Return", "5.8%/yr", "5-8%", "MODERATE", "No"],
+            ["Discount Rate", "5%", "3-8%", "MODERATE", "No"],
+            ["Wage Growth (Formal)", "1.5%/yr", "0.5-2.5%", "MODERATE", "No"],
         ],
-        nudge=None
+        nudge="Of 12 high-impact parameters, only 1 has HIGH confidence. The tracer study (Rs 45-55L) would validate the 4 most uncertain parameters."
     )
 
     # ===========================================
-    # SLIDE 17: Closing
+    # CLOSING SLIDE
     # ===========================================
     add_title_slide(
         prs,
         "Thank You",
-        "The key question isn't whether these interventions work —\nit's how to optimize their delivery for maximum impact.\n\nRWF Economic Impact Model  •  February 2026"
+        "Both interventions generate positive returns in ALL 32 scenarios tested.\n"
+        "The key question is how to optimize delivery for maximum impact.\n\n"
+        "RWF Economic Impact Model  •  February 2026"
     )
 
     # Save presentation
