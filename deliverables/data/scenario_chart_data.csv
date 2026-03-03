@@ -1,0 +1,9 @@
+trade_category,half_life_low,half_life_mid,half_life_high,example_trades,npv_impact_vs_baseline_pct,bcr_rwf_only_approx,bcr_full_approx
+A_rapid_obsolescence,5,6.5,8,"IT/ITES, digital marketing, desktop publishing",-22,104,3.9
+B_moderate_decay,8,9.5,12,"auto mechanics, CNC operation, COPA, electronics",-5,126,4.8
+C_durable_skills,12,14,18,"electrician, plumber, welder, fitter, turner",+30,173,6.6
+D_long_term_persistent,18,21,25,"health assistant, draughtsman, surveyor, agriculture",+50,200,7.6
+scenario_it_heavy,,,,"40% A, 35% B, 20% C, 5% D (weighted h=9.2yr)",-12,118,4.5
+scenario_balanced_national,,,,"12% A, 28% B, 43% C, 6% D (weighted h=11.4yr)",+7,143,5.4
+scenario_manufacturing_heavy,,,,"5% A, 15% B, 60% C, 20% D (weighted h=15.1yr)",+30,173,6.6
+baseline_model,,,,"All trades uniform h=10yr",0,133,5.1

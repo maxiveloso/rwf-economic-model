@@ -80,7 +80,7 @@ Two perspectives on Return on Investment:
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-org/rwf-economic-model.git
+git clone https://github.com/maxiveloso/rwf-economic-model.git
 cd rwf-economic-model
 
 # Install dependencies
@@ -124,7 +124,7 @@ rwf-economic-model/
 │
 ├── data/
 │   ├── parameters/              # Parameter registry CSV
-│   ├── sources/                 # 48 reference documents (PDFs)
+│   ├── sources/                 # 55+ reference documents (PDFs)
 │   └── results/                 # Model outputs
 │       ├── lnpv_baseline.csv    # 32 scenario results
 │       ├── sensitivity/         # Sensitivity CSVs
@@ -142,6 +142,13 @@ rwf-economic-model/
 │   ├── run_baseline.py
 │   ├── run_sensitivity.py
 │   └── run_validation.py
+│
+├── deliverables/                # Post-delivery analysis (Feb 2026)
+│   ├── appendices/              # 9 technical appendices
+│   ├── data/                    # Scenario & persistence CSVs
+│   ├── donor_materials/         # 1-pagers for funders
+│   ├── ops/                     # Orchestrator & task map
+│   └── tracer/                  # Tracer study proposal v2
 │
 ├── tests/                       # Unit tests
 │
@@ -164,6 +171,24 @@ rwf-economic-model/
 | [Model Chain Diagrams](docs/model_chain_diagrams.md) | Step-by-step parameter flow calculations | Technical deep-dive |
 | [VALIDATION_REPORT.md](docs/VALIDATION_REPORT.md) | 8/8 QA checks passed | Quality assurance |
 | [Stakeholder Q&A](docs/stakeholder/QA_GUIDE.md) | 12 anticipated questions | Meeting prep |
+| [Deliverables Package](deliverables/README_release.md) | Post-delivery deep dives (Feb 2026) | All audiences |
+
+### Post-Delivery Analysis (February 2026)
+
+10 deep-dive workstreams completed after initial PoC delivery. All outputs in [`deliverables/`](deliverables/):
+
+| Deliverable | Description |
+|-------------|-------------|
+| [Gender Funnel Analysis](deliverables/appendices/gender_data_assessment.md) | 14 priority tracking fields, literature benchmarks for female LFPR/wages |
+| [Trade Half-Life Taxonomy](deliverables/appendices/trade_halflife_summary.md) | 4-category trade classification (Rapid/Moderate/Durable/Long-term) with NPV implications |
+| [Policy Persistence Scenarios](deliverables/appendices/policy_persistence_scenarios.md) | Illustrative multi-cohort multiplier analysis |
+| [Parameter Evidence Table](deliverables/appendices/parameter_evidence_table.md) | 12 high-impact parameters ranked by confidence |
+| [Tracer Study Proposal v2](deliverables/tracer/tracer_onepager_v2.md) | 1,200-1,600 sample, Rs 45-55L, 18-month design |
+| [Top 5 Evidence Sources](deliverables/appendices/top5_sources_slide.md) | Key citations for presentations |
+| [Donor One-Pagers](deliverables/donor_materials/) | Conservative & extended BCR framing |
+| [Assumptions Appendix](deliverables/appendices/assumptions_methodology_appendix.md) | Full parameter table with confidence ratings |
+| [Evidence Gaps & Budget](deliverables/appendices/evidence_gaps_budget_note.md) | Prioritized research investment plan |
+| [Microdata Access Checklist](deliverables/appendices/microdata_access_checklist.md) | PLFS/NSSO unit-level data access steps |
 
 ---
 
@@ -208,7 +233,7 @@ The model uses 77 parameters documented in `data/parameters/Parameter_Sources_Ma
 |-----------|-------|-------|--------|
 | P_FORMAL_RTE | 30% | 20-50% | RWF guidance |
 | P_FORMAL_APPRENTICE | 68% | 50-90% | RWF program data |
-| APPRENTICE_DECAY_HALFLIFE | 12 years | 5-30 | Assumed |
+| APPRENTICE_DECAY_HALFLIFE | 10 years | 5-30 | Assumed |
 | MINCER_RETURN_HS | 5.8% | 5-8% | Chen et al. 2022 |
 
 ### Tier 2 (Important)
@@ -232,7 +257,7 @@ The model uses 77 parameters documented in `data/parameters/Parameter_Sources_Ma
 | NPV Magnitude & Ordering | PASS | All 32 LNPVs positive |
 | Break-Even Cost Thresholds | PASS | Range Rs 1.9L - Rs 18.5L |
 | Regional Heterogeneity | PASS | South > West > North > East |
-| Treatment Effect Decay | PASS | Monotonic, 50% at t=12 |
+| Treatment Effect Decay | PASS | Monotonic, 50% at t=10 |
 | Sensitivity Consistency | PASS | MC median within 11% of baseline |
 | Assumptions Documented | PASS | All 77 parameters sourced |
 | Decomposition Analysis | PASS | 80% + 20% = 100% |
@@ -241,7 +266,7 @@ The model uses 77 parameters documented in `data/parameters/Parameter_Sources_Ma
 
 ## Data Sources
 
-The model draws on 48 reference documents including:
+The model draws on 55+ reference documents including:
 
 - **Government**: PLFS 2023-24, MSDE Annual Reports, NITI Aayog, DGT Tracer Studies
 - **International**: ILO Global Wage Report 2024, ILO India Employment Report 2024
@@ -255,7 +280,7 @@ All sources are available in `data/sources/` for reproducibility.
 
 1. **Causal Identification**: Selection-on-observables assumption may overstate effects by 20-40%
 2. **Geographic Granularity**: State/district-level effects require microdata
-3. **Wage Persistence**: Apprenticeship half-life (h=12 years) is assumed
+3. **Wage Persistence**: Apprenticeship half-life (h=10 years) is assumed
 4. **External Validity**: Literature parameters may not fully generalize to RWF beneficiaries
 5. **No Beneficiary Data**: Population averages used, not RWF-specific outcomes
 
@@ -263,16 +288,23 @@ All sources are available in `data/sources/` for reproducibility.
 
 ## Recommended Next Steps
 
-### Priority 1: Longitudinal Tracer Study
-- Track 200-300 beneficiaries for 1-2 years
-- Validate P_FORMAL assumptions
-- Estimated cost: Rs 5-8 lakhs
-- Impact: Reduce uncertainty by 50%+
+### Priority 1: Longitudinal Tracer Study (Fully Designed)
+- **Sample:** 1,200-1,600 beneficiaries (RTE + Apprenticeship + matched comparison)
+- **Duration:** 18 months core, 24-30 months extended
+- **Budget:** Rs 45-55 lakhs
+- **Design:** Gender × trade × vintage stratification, PSM matching, cross-cohort decay estimation
+- **Impact:** Reduce parameter uncertainty from ±50% to ±15-20% for top 4 parameters
+- See full proposal: [`deliverables/tracer/tracer_onepager_v2.md`](deliverables/tracer/tracer_onepager_v2.md)
 
-### Priority 2: Full Causal Evaluation
-- With beneficiary microdata
-- Propensity score matching
-- Effort: 150-200 hours
+### Priority 2: Quick Wins (No New Data Collection)
+- PLFS unit-level microdata access (Rs 1-2L, 2-3 months) — see [microdata checklist](deliverables/appendices/microdata_access_checklist.md)
+- Gender-disaggregated reporting from existing RWF operational data
+- Trade-specific outcome tracking in current apprenticeship MIS
+
+### Priority 3: Full Causal Evaluation
+- With beneficiary microdata from tracer study
+- Propensity score matching and difference-in-differences
+- Effort: 150-200 hours post-tracer
 
 ---
 
@@ -281,9 +313,9 @@ All sources are available in `data/sources/` for reproducibility.
 If you use this model, please cite:
 
 ```
-RightWalk Foundation Economic Impact Model v4.3 (2026)
+RightWalk Foundation Economic Impact Model v4.4 (2026)
 Lifetime Economic Benefits Estimation for RTE and Apprenticeship Interventions
-https://github.com/your-org/rwf-economic-model
+https://github.com/maxiveloso/rwf-economic-model
 ```
 
 ---

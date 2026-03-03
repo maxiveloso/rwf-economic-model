@@ -87,3 +87,7 @@ logs/
 # Cache directories
 .cache/
 cache/
+
+# Binary presentation templates (not tracked)
+Lifetime Incremental Earning.pptx
+RWF_Presentation_Template.pptx

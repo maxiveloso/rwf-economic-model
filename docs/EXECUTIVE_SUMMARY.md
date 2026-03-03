@@ -1,7 +1,7 @@
 # RightWalk Foundation Economic Impact Assessment
 ## Executive Summary | Proof-of-Concept Results
 
-**Date:** January 2026
+**Date:** February 2026
 **Prepared by:** RWF Analytics Team
 
 ---
@@ -56,6 +56,23 @@ This analysis estimates the lifetime economic benefits of RightWalk Foundation's
 
 **Interpretation:** If actual program cost per beneficiary is below these thresholds, the intervention achieves a 3:1 benefit-cost ratio.
 
+### Dual BCR Analysis (February 2026)
+
+Two perspectives on Return on Investment:
+
+| Metric | RTE | Apprenticeship |
+|--------|-----|----------------|
+| **Average LNPV** | Rs 14.9 Lakhs | Rs 36.4 Lakhs |
+| **Full BCR** (Total Investment) | 14.3× (range 5.4-29.0) | 23.0× (range 12.5-35.0) |
+| **RWF-only BCR** (Direct Spend) | 372× (range 141-755) | 606× (range 329-924) |
+| **RWF Direct Cost** | Rs 4,000 | Rs 6,000 |
+| **Total Investment** | Rs 1.04 Lakhs | Rs 1.58 Lakhs |
+| **Unlock Multiplier** | 26× | 39.6× |
+
+> **Full BCR**: Total benefits / total costs (RWF + government + private co-finance)
+> **RWF-only BCR**: Total benefits / RWF direct spend only (funder ROI perspective)
+> **Unlock Multiplier**: Total investment unlocked per rupee of RWF direct spend
+
 ### Sensitivity Results
 - Monte Carlo median within 11% of baseline (high consistency)
 - Critical uncertainty: P_FORMAL parameters and Apprentice decay half-life drive 50-70% of LNPV variation
@@ -96,7 +113,7 @@ We apply a Lifetime Net Present Value (LNPV) framework that computes:
 
 1. **Causal Identification:** Selection-on-observables assumption may overstate effects by 20-40% if motivated families self-select into programs
 2. **Geographic Granularity:** State/district-level effects require microdata not available in this PoC
-3. **Wage Persistence (h):** Apprenticeship premium decay rate (12-year half-life) is assumed; could be faster or slower
+3. **Wage Persistence (h):** Apprenticeship premium decay rate (10-year half-life) is assumed; could be faster or slower
 4. **External Validity:** Literature-based parameters may not generalize to RWF-specific beneficiaries
 5. **No Beneficiary Data:** Estimates use population averages, not actual RWF participant outcomes
 6. **P_FORMAL Split:** 30% RTE vs 9.1% control based on RWF guidance, not observed longitudinal data
@@ -113,13 +130,20 @@ We apply a Lifetime Net Present Value (LNPV) framework that computes:
 - Prioritize expansion in South/West urban areas (highest returns)
 - For North/East rural, consider complementary interventions or accept lower BCR for equity
 
-### Data Investment (Priority)
-- **Longitudinal tracer study** (1-2 years) tracking 200-300 beneficiaries to validate P_FORMAL assumptions and wage persistence
-- Cost: Approximately Rs 5-8L
-- Impact: Would reduce uncertainty by 50%+ and upgrade PoC to causal evaluation
+### Data Investment (Priority — Fully Designed)
+- **Longitudinal tracer study** (18 months) tracking 1,200-1,600 beneficiaries across RTE, Apprenticeship, and matched comparison groups
+- **Design:** Gender × trade × vintage stratification, propensity score matching, cross-cohort decay estimation
+- **Budget:** Rs 45-55 lakhs
+- **Impact:** Reduce parameter uncertainty from ±50% to ±15-20% for top 4 parameters
+- See full proposal: [`deliverables/tracer/tracer_onepager_v2.md`](../deliverables/tracer/tracer_onepager_v2.md)
 
-### Full Evaluation
-- 150-200 hour project with beneficiary microdata would enable propensity score matching and causal inference
+### Quick Wins (No New Data Collection)
+- PLFS unit-level microdata access (Rs 1-2L, 2-3 months)
+- Gender-disaggregated reporting from existing RWF operational data
+- Trade-specific outcome tracking in current apprenticeship MIS
+
+### Full Causal Evaluation
+- 150-200 hour project with beneficiary microdata from tracer study would enable propensity score matching and difference-in-differences
 
 ---
 
@@ -129,7 +153,13 @@ We apply a Lifetime Net Present Value (LNPV) framework that computes:
 
 ---
 
-**Appendix:** Technical Appendix (5-7 pages) provides detailed methodology, complete parameter specifications, sensitivity analyses, and validation results.
+### Post-Delivery Deep Dives (February 2026)
 
-**Model Version:** economic_core_v4.py | parameter_registry_v3.py
-**Validation Status:** 8/8 QA checks passed (January 2026)
+Following the initial PoC delivery, 10 additional analytical workstreams were completed. Key outputs include gender funnel analysis, trade half-life taxonomy, policy persistence scenarios, evidence quality audit, and a fully designed tracer study. All deliverables are available in [`deliverables/`](../deliverables/README_release.md).
+
+---
+
+**Appendix:** Technical Appendix (5-7 pages) provides detailed methodology, complete parameter specifications, sensitivity analyses, and validation results. See also [`deliverables/appendices/`](../deliverables/appendices/) for assumptions methodology, evidence gaps, and parameter evidence table.
+
+**Model Version:** economic_core_v4.py | parameter_registry_v3.py | v4.4
+**Validation Status:** 8/8 QA checks passed (February 2026)
